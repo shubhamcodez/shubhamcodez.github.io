@@ -4,30 +4,125 @@ import Quant from './components/Quant';
 import Resume from './components/Resume';
 import Casual from './components/Casual';
 import Team from './components/Team';
+import Research from './components/Research';
 import Coding from './components/quant/Coding';
 import Resources from './components/quant/Resources';
 import Puzzles from './components/quant/Puzzles';
 import DarkModeToggle from './components/DarkModeToggle';
+import SEO from './components/SEO';
 
 function AppContent() {
   const location = useLocation();
   const isQuantPage = location.pathname.startsWith('/quant');
 
+  // SEO configuration based on current route
+  const getSEOConfig = () => {
+    const baseUrl = "https://shubhamcodez.github.io";
+    const path = location.pathname;
+
+    switch (path) {
+      case '/':
+        return {
+          title: "Shubham Singh | Quantitative Finance Researcher & Machine Learning Expert",
+          description: "Shubham Singh - Exceptional Quantitative Researcher with advanced expertise in statistical modeling, machine learning, and algorithmic trading. Research leader in quantitative finance, LLM finetuning, quantum semantic embeddings, and market making strategies. Founder of Exituity.",
+          keywords: "quantitative researcher, machine learning expert, algorithmic trading, statistical modeling, quantitative finance, LLM finetuning, quantum semantic embedding, market making, arbitrage strategies, optimal control, NYU graduate, published researcher, Exituity founder",
+          image: `${baseUrl}/img_nvidia.png`,
+          type: "profile"
+        };
+      case '/quant':
+        return {
+          title: "Quantitative Finance Resources | Shubham Singh",
+          description: "Comprehensive quantitative finance resources including coding challenges, puzzles, and educational materials for aspiring quantitative researchers and traders.",
+          keywords: "quantitative finance resources, quant coding challenges, trading puzzles, quantitative finance education, algorithmic trading resources",
+          image: `${baseUrl}/img_nvidia.png`,
+          type: "website"
+        };
+      case '/quant/coding':
+        return {
+          title: "Quantitative Finance Coding Challenges | Shubham Singh",
+          description: "Practice coding challenges and problems for quantitative finance interviews and algorithmic trading positions.",
+          keywords: "quant coding challenges, quantitative finance coding, algorithmic trading coding, quant interview preparation, finance programming",
+          image: `${baseUrl}/img_nvidia.png`,
+          type: "website"
+        };
+      case '/quant/resources':
+        return {
+          title: "Quantitative Finance Learning Resources | Shubham Singh",
+          description: "Curated list of books, papers, courses, and resources for learning quantitative finance, machine learning, and algorithmic trading.",
+          keywords: "quantitative finance books, quant learning resources, finance courses, trading education, quantitative finance papers",
+          image: `${baseUrl}/img_nvidia.png`,
+          type: "website"
+        };
+      case '/quant/puzzles':
+        return {
+          title: "Quantitative Finance Puzzles | Shubham Singh",
+          description: "Brain teasers and puzzles for quantitative finance interviews and trading positions. Test your problem-solving skills.",
+          keywords: "quant puzzles, finance brain teasers, quantitative interview puzzles, trading puzzles, quant problem solving",
+          image: `${baseUrl}/img_nvidia.png`,
+          type: "website"
+        };
+      case '/resume':
+        return {
+          title: "Resume | Shubham Singh - Quantitative Researcher",
+          description: "Professional resume and CV of Shubham Singh - Quantitative Researcher specializing in machine learning, algorithmic trading, and statistical modeling.",
+          keywords: "Shubham Singh resume, quantitative researcher CV, quant researcher resume, machine learning engineer resume",
+          image: `${baseUrl}/img_nvidia.png`,
+          type: "profile"
+        };
+      case '/research':
+        return {
+          title: "Research | Shubham Singh - Quantitative Finance & Machine Learning",
+          description: "Research publications, working papers, and preprints by Shubham Singh on quantitative finance, machine learning, LLM alignment, and algorithmic trading.",
+          keywords: "quantitative finance research, machine learning research, LLM alignment, algorithmic trading research, research papers, arXiv preprints",
+          image: `${baseUrl}/img_nvidia.png`,
+          type: "website"
+        };
+      case '/casual':
+        return {
+          title: "Casual Inference | Shubham Singh",
+          description: "Casual Inference - Personal blog and articles by Shubham Singh on quantitative finance, machine learning, and technology.",
+          keywords: "Casual Inference, quantitative finance blog, machine learning blog, Shubham Singh blog, quant research blog",
+          image: `${baseUrl}/img_nvidia.png`,
+          type: "website"
+        };
+      case '/team':
+        return {
+          title: "Team | Shubham Singh",
+          description: "Meet the team and collaborators working with Shubham Singh on quantitative research and machine learning projects.",
+          keywords: "research team, collaborators, quantitative research team",
+          image: `${baseUrl}/img_nvidia.png`,
+          type: "website"
+        };
+      default:
+        return {
+          title: "Shubham Singh | Quantitative Finance Researcher & Machine Learning Expert",
+          description: "Shubham Singh - Exceptional Quantitative Researcher with advanced expertise in statistical modeling, machine learning, and algorithmic trading.",
+          keywords: "quantitative researcher, machine learning expert, algorithmic trading",
+          image: `${baseUrl}/img_nvidia.png`,
+          type: "website"
+        };
+    }
+  };
+
+  const seoConfig = getSEOConfig();
+
   return (
     <div className="App">
+      <SEO {...seoConfig} />
       <DarkModeToggle />
       <div>
         <div className="container">
-          <header className="text-center my-4">
-            <h1>Shubham Singh</h1>
-          </header>
+          {location.pathname !== '/casual' && location.pathname !== '/research' && (
+            <header className="text-center my-4">
+              <h1>Shubham Singh</h1>
+            </header>
+          )}
 
           {!isQuantPage && (
             <nav className="container-fluid">
               <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/quant">Quant Resources</Link></li>
-                <li><Link to="/resume">Resume</Link></li>
+                <li><Link to="/research">Research</Link></li>
                 <li><Link to="/casual">Blog</Link></li>
               </ul>
             </nav>
@@ -41,123 +136,71 @@ function AppContent() {
                 <div className="intro-content">
                   <div className="justified-text">
                     <p>
-                      I am a Quantitative Researcher specializing in statistical modeling, machine learning, and deep learning. I have developed and backtested predictive pricing models and algorithmic trading strategies; built robust trading systems and risk frameworks; and engineered scalable ML pipelines from data ingestion and feature engineering to AI model training and real-time deployment.
+                      I am an engineer specializing in machine learning, AI, engineering, and quantitative research. My work encompasses building AI solutions, developing trading strategies, and constructing end-to-end systems—from predictive pricing models and algorithmic trading strategies to robust trading systems, risk frameworks, and scalable ML pipelines that transform data ingestion and feature engineering into real-time AI model deployment.
                     </p>
-                    <p>
-                      I hold an M.S. in Computer Engineering from New York University (Sep 2023 – May 2025) and a B.S. in Computer Science from Bharati Vidyapeeth University (Jul 2019 – Jun 2023).
-                    </p>
-                    <p>
-                      Currently working as Quant Researcher at GoQuant, where I direct alpha research initiatives, deploy systematic futures and options strategies, and architect execution engines and quantitative pricing models. I design and implement intelligent smart-order-routing systems that optimize venue selection, minimizing market impact, slippage, and transaction fees.
-                    </p>
-                    <p>
-                      My research interests include quantitative finance, machine learning, statistical modeling, and algorithmic trading. I am also interested in interdisciplinary topics that integrate methodologies in multiple fields such as applied probability, statistics, and optimization, along with their applications in addressing high-stake decision-making problems in modern large-scale systems, such as financial and economic systems. Some of the topics that I have been working on recently:
-                    </p>
+                    <p><strong>Education:</strong></p>
                     <ul>
-                      <li>LLM Fintetuning and alignment,</li>
-                      <li>Quantum semantic embedding of LLMs,</li>
-                      <li>Market making & Arbitrage strategies,</li>
-                      <li>Optimal control</li>
+                      <li>M.S. in Computer Engineering, New York University (Sep 2023 – Aug 2025)</li>
+                      <li>B.S. in Computer Science, Bharati Vidyapeeth University (Jul 2019 – Jun 2023)</li>
                     </ul>
-                    <p>Please find my CV <Link to="/resume">here</Link>.</p>
+                    <p><strong>Experience:</strong></p>
+                    <ul>
+                      <li><strong>xAI</strong> — AI Quant Tutor (Current): Contributing to AI training and improvement initiatives</li>
+                      <li><strong>Exituity</strong> — Founder (Current): Building AI financial navigator with forecasting, valuation, and real-time insights</li>
+                      <li><strong>GoQuant</strong> — Quant Researcher (Sep 2024 – Sep 2025): Directed alpha research and deployed systematic trading strategies</li>
+                      <li><strong>Artificial Intelligence Institute of South Carolina (AIISC)</strong> — AI Researcher (Sep 2024 – May 2025): Co-authored Alignment Quality Index paper and fine-tuned LLM models for alignment research</li>
+                      <li><strong>New York University</strong> — AI Product Management Mentor (May 2024 – May 2025): Mentored students and orchestrated cross-institution collaborations</li>
+                      <li><strong>QuantFarming</strong> — Machine Learning Intern (May 2024 - July 2024): Engineered backtesting and optimization frameworks for trading strategies</li>
+                      <li><strong>Symbiosis Institute of Medical Imaging</strong> — AI Research Intern (October 2022 - Mar 2023): Developed deep learning pipeline for medical image synthesis</li>
+                      <li><strong>United Nations Development Programme</strong> — Data Science Intern (July 2022 - January 2023): Deployed ML models for geospatial analysis and NLP pipelines for policy insights</li>
+                      <li><strong>Dexterity Global Group</strong> — Management Intern (May 2022 - June 2022)</li>
+                      <li><strong>Algorithmic Biologics</strong> — Full Stack Intern (Sep 2021 - Dec 2021)</li>
+                      <li><strong>DSC BVUCEOP</strong> — Member (Oct 2019 - June 2023)</li>
+                      <li><strong>Entrepreneurship Development Cell</strong> — Member (July 2019 - June 2020)</li>
+                    </ul>
                     <p>Email: shubham.singh (at) nyu (dot) edu</p>
                   </div>
                 </div>
                 <div className="profile-image-container">
-                  <img src="/me.jpeg" alt="Shubham Singh" className="profile-image" />
+                  <img src="/img_nvidia.png" alt="Shubham Singh" className="profile-image" />
                 </div>
               </div>
 
-              <div className="publications-box">
-                <h3>Working Papers and Preprints</h3>
-                <div className="publications-content">
-                  <ul>
-                    <li className="aqi-paper">
-                      <div className="aqi-content">
-                        <div className="aqi-image">
-                          <img src="/aqi.png" alt="AQI Paper" className="aqi-paper-image" />
-                        </div>
-                        <div className="aqi-text">
-                          <strong>Alignment Quality Index (AQI): Beyond Refusals: AQI as an Intrinsic Alignment Diagnostic via Latent Geometry, Cluster Divergence, and Layer wise Pooled Representations</strong>
-                          <span className="keywords">Keywords: AI Alignment, Large Language Models, Machine Learning, Deep Learning, Neural Networks, Model Evaluation, AI Safety, Computational Linguistics</span>
-                          A Borah, C Sharma, D Khanna, U Bhatt, G Singh, HM Abdullah, RK Ravi, et al. <em>arXiv preprint arXiv:2506.13901, 2025</em>
-                        </div>
+              <div className="events-box mt-4">
+                <h3>Events & Competitions</h3>
+                <div className="events-content">
+                  <div className="events-grid">
+                    <div className="event-item">
+                      <img src="/cornell competition.jpg" alt="Cornell Competition" className="event-image" />
+                      <div className="event-overlay">
+                        <div className="event-description">Placed top 5 in all games played at the Cornell Competition, including market making, estimatathon, trading, and prediction markets.</div>
                       </div>
-                    </li>
-                    <li className="syseng-paper">
-                      <div className="syseng-content">
-                        <div className="syseng-image">
-                          <img src="/syseng.png" alt="Systems Engineering Paper" className="syseng-paper-image" />
-                        </div>
-                        <div className="syseng-text">
-                          <strong>Systems Engineering of Large Language Models for Enterprise Applications</strong>
-                          <span className="keywords">Keywords: Large Language Models, Enterprise AI, Systems Engineering, Machine Learning, Natural Language Processing, Business Applications, AI Integration</span>
-                          S Singh. <em>Preprints, 2025</em>
-                        </div>
+                    </div>
+                    <div className="event-item">
+                      <img src="/cubist hackathon.jpg" alt="Cubist Hackathon 2024" className="event-image" />
+                      <div className="event-overlay">
+                        <div className="event-description">Built an application for tourists visiting NYC that uses graph algorithms to optimize for costs and time by leveraging subway timing, optimal paths, and time of day at the Cubist Hackathon 2024.</div>
                       </div>
-                    </li>
-                    <li className="kanfac-paper">
-                      <div className="kanfac-content">
-                        <div className="kanfac-image">
-                          <img src="/kanfac.png" alt="KAN Factor Models Paper" className="kanfac-paper-image" />
-                        </div>
-                        <div className="kanfac-text">
-                          <strong>KAN based Autoencoders for Factor Models</strong>
-                          <span className="keywords">Keywords: Kolmogorov-Arnold Networks, Autoencoders, Factor Models, Quantitative Finance, Machine Learning, Dimensionality Reduction, Financial Modeling</span>
-                          T Wang, S Singh. <em>arXiv preprint arXiv:2408.02694, 2024</em> (2 citations)
-                        </div>
+                    </div>
+                    <div className="event-item">
+                      <img src="/ghc24.jpg" alt="GHC 2024" className="event-image" />
+                      <div className="event-overlay">
+                        <div className="event-description">Represented NYU Tandon at GHC 2024, helping advance GHC's mission of empowering women in technology. Engaged with students and encouraged them to join NYU as their representative.</div>
                       </div>
-                    </li>
-                    <li className="factorsbtc-paper">
-                      <div className="factorsbtc-content">
-                        <div className="factorsbtc-image">
-                          <img src="/factorsbtc.png" alt="Bitcoin Market Risk Factors Paper" className="factorsbtc-paper-image" />
-                        </div>
-                        <div className="factorsbtc-text">
-                          <strong>An empirical study of market risk factors for Bitcoin</strong>
-                          <span className="keywords">Keywords: Bitcoin, Cryptocurrency, Market Risk, Quantitative Finance, Financial Modeling, Risk Management, Digital Assets, Volatility Analysis</span>
-                          S Singh. <em>arXiv preprint arXiv:2406.19401, 2024</em>
-                        </div>
+                    </div>
+                    <div className="event-item">
+                      <img src="/qualcomm lmstudio hackathon.jpg" alt="Qualcomm LM Studio Hackathon" className="event-image" />
+                      <div className="event-overlay">
+                        <div className="event-description">Built AutoDoc, a tool designed to automatically create documentation and tests for code, and provide an interface to interact and find code snippets across the entire database at the Qualcomm LM Studio Hackathon.</div>
                       </div>
-                    </li>
-                    <li className="transformeteth-paper">
-                      <div className="transformeteth-content">
-                        <div className="transformeteth-image">
-                          <img src="/transformereth.png" alt="Transformer Ethereum Price Prediction Paper" className="transformeteth-paper-image" />
-                        </div>
-                        <div className="transformeteth-text">
-                          <strong>Transformer-based approach for ethereum price prediction using crosscurrency correlation and sentiment analysis</strong>
-                          <span className="keywords">Keywords: Ethereum, Cryptocurrency, Price Prediction, Transformer Models, Sentiment Analysis, Cross-currency Correlation, Machine Learning, Deep Learning, Financial Forecasting</span>
-                          S Singh, M Bhat. <em>arXiv preprint arXiv:2401.08077, 2024</em> (8 citations)
-                        </div>
+                    </div>
+                    <div className="event-item">
+                      <img src="/aicaf24.jpg" alt="AICAF 2024" className="event-image" />
+                      <div className="event-overlay">
+                        <div className="event-description">Moderated the panel on Reinforcement Learning in Finance at AICAF'24. Volunteered for other parts of the conference.</div>
                       </div>
-                    </li>
-                    <li className="brainvoxgen-paper">
-                      <div className="brainvoxgen-content">
-                        <div className="brainvoxgen-image">
-                          <img src="/brainvoxgen.png" alt="BrainVoxGen Paper" className="brainvoxgen-paper-image" />
-                        </div>
-                        <div className="brainvoxgen-text">
-                          <strong>BrainVoxGen: Deep learning framework for synthesis of Ultrasound to MRI</strong>
-                          <span className="keywords">Keywords: Medical Imaging, Ultrasound, MRI, Deep Learning, Image Synthesis, Computer Vision, Healthcare AI, Biomedical Engineering</span>
-                          S Singh, M Bewoor, A Ranapurwala, S Rai, S Patil. <em>arXiv preprint arXiv:2310.08608, 2023</em> (3 citations)
-                        </div>
-                      </div>
-                    </li>
-
-                    <li className="geo-paper">
-                      <div className="geo-content">
-                        <div className="geo-image">
-                          <img src="/geo.png" alt="Climate Resilience Agriculture Paper" className="geo-paper-image" />
-                        </div>
-                        <div className="geo-text">
-                          <strong>Identifying Climate-resilient Agricultural Practices in India Through Positive Deviance Analysis of Soil Moisture, Temperature, and Precipitation Anomalies in Telangana</strong>
-                          <span className="keywords">Keywords: Climate Resilience, Agriculture, India, Telangana, Soil Moisture, Temperature Analysis, Precipitation, Environmental Science, Data Analysis</span>
-                          S Singh. <em>International Journal of Engineering Applied Sciences and Technology 7(10), 2023</em>
-                        </div>
-                      </div>
-                    </li>
-
-                  </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -166,6 +209,7 @@ function AppContent() {
           <Route path="/quant/coding" element={<Coding />} />
           <Route path="/quant/resources" element={<Resources />} />
           <Route path="/quant/puzzles" element={<Puzzles />} />
+          <Route path="/research" element={<Research />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/casual" element={<Casual />} />
           <Route path="/team" element={<Team />} />
@@ -174,7 +218,8 @@ function AppContent() {
         <div className="university-logos text-center mt-4">
           <img src="/NYU.png" alt="New York University" className="university-logo" />
           <img src="/bvp.png" alt="Bharati Vidyapeeth University" className="university-logo" />
-          <img src="/GoQuant.png" alt="GoQuant" className="university-logo full-width" />
+          <img src="/XAI.avif" alt="xAI" className="university-logo" />
+          <img src="/exituity_logo.png" alt="Exituity" className="university-logo full-width" />
           <img src="/aiisc.png" alt="AIISC" className="university-logo full-width" />
         </div>
         

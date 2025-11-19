@@ -1,32 +1,44 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import JourneyIntoQuantFinance from './blog/JourneyIntoQuantFinance';
+import MLInTrading from './blog/MLInTrading';
+import FutureOfAlgoTrading from './blog/FutureOfAlgoTrading';
+import RiskManagement from './blog/RiskManagement';
+import OptionsPricing from './blog/OptionsPricing';
+import HighFrequencyTrading from './blog/HighFrequencyTrading';
+import PortfolioOptimization from './blog/PortfolioOptimization';
+import TimeSeriesAnalysis from './blog/TimeSeriesAnalysis';
+import CreditRisk from './blog/CreditRisk';
+import RAGApplications from './blog/RAGApplications';
+import PeFTMethods from './blog/PeFTMethods';
+import MCPDevelopment from './blog/MCPDevelopment';
+import FrankensteinReview from './blog/FrankensteinReview';
 
-// Sample blog posts data - moved outside component to prevent recreation
-const sampleBlogPosts = [
-  {
-    id: 1,
-    title: "My Journey into Quantitative Finance",
-    date: "2024-01-15",
-    description: "How I discovered my passion for quantitative finance and the steps I took to enter this field."
-  },
-  {
-    id: 2,
-    title: "Understanding Machine Learning in Trading",
-    date: "2024-02-20",
-    description: "A deep dive into how machine learning algorithms are transforming the trading landscape."
-  },
-  {
-    id: 3,
-    title: "The Future of Algorithmic Trading",
-    date: "2024-03-10",
-    description: "Exploring emerging trends and technologies that will shape the future of algorithmic trading."
-  },
-  {
-    id: 4,
-    title: "Risk Management in Quantitative Strategies",
-    date: "2024-04-05",
-    description: "Essential risk management techniques every quantitative trader should know."
-  }
-];
+// Blog posts data imported from individual files
+const allBlogPosts = [
+  FrankensteinReview,
+  CreditRisk,
+  TimeSeriesAnalysis,
+  PortfolioOptimization,
+  HighFrequencyTrading,
+  OptionsPricing,
+  RAGApplications,
+  PeFTMethods,
+  MCPDevelopment,
+  JourneyIntoQuantFinance,
+  MLInTrading,
+  FutureOfAlgoTrading,
+  RiskManagement
+].map(post => ({
+  id: post.id,
+  title: post.title,
+  date: post.date,
+  description: post.description
+}));
+
+// Sort blogs by date (newest first)
+const sampleBlogPosts = [...allBlogPosts].sort((a, b) => {
+  return new Date(b.date) - new Date(a.date);
+});
 
 const Casual = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -36,64 +48,83 @@ const Casual = () => {
   // Use useMemo to prevent unnecessary re-renders
   const memoizedBlogPosts = useMemo(() => sampleBlogPosts, []);
 
-  useEffect(() => {
-    setBlogPosts(memoizedBlogPosts);
-  }, [memoizedBlogPosts]);
-
-  const handleBlogClick = (blog) => {
-    setSelectedBlog(blog);
-    // In a real app, you would fetch the actual blog content here
-    setBlogContent(`
+  const getBlogContent = (blog) => {
+    const blogMap = {
+      1: JourneyIntoQuantFinance,
+      2: MLInTrading,
+      3: FutureOfAlgoTrading,
+      4: RiskManagement,
+      5: OptionsPricing,
+      6: HighFrequencyTrading,
+      7: PortfolioOptimization,
+      8: TimeSeriesAnalysis,
+      9: CreditRisk,
+      10: RAGApplications,
+      11: PeFTMethods,
+      12: MCPDevelopment,
+      13: FrankensteinReview
+    };
+    
+    const blogPost = blogMap[blog.id];
+    return blogPost ? blogPost.content : `
       <h2>${blog.title}</h2>
       <p><em>Published on ${blog.date}</em></p>
       <p>${blog.description}</p>
-      <p>This is a sample blog post content. In a real application, this would contain the full blog post with rich formatting, images, and detailed content.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    `);
+    `;
   };
+
+  const handleBlogClick = (blog) => {
+    setSelectedBlog(blog);
+    setBlogContent(getBlogContent(blog));
+  };
+
+  useEffect(() => {
+    setBlogPosts(memoizedBlogPosts);
+    // Automatically select the latest blog post (first in the array) on initial load
+    if (memoizedBlogPosts.length > 0 && selectedBlog === null) {
+      const latestBlog = memoizedBlogPosts[0];
+      handleBlogClick(latestBlog);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="container">
       <header>
-        <h1 className="title">Shubham Singh's Blog</h1>
+        <h1 className="title">Casual Inference</h1>
       </header>
 
       <section id="about" className="my-4">
         <p>This is my personal blog where I share insights on various topics. Feel free to explore!</p>
       </section>
 
-      <section id="blogs" className="my-4">
-        <h2 className="title">Recent Blog Posts</h2>
-        <div className="row">
-          <div className="col-md-4">
-            <ul className="list-group">
-              {blogPosts.map(blog => (
-                <li key={blog.id} className="list-group-item">
-                  <button 
-                    onClick={() => handleBlogClick(blog)}
-                    className={`btn btn-link p-0 text-start ${selectedBlog?.id === blog.id ? 'fw-bold' : ''}`}
-                    style={{ textDecoration: 'none', border: 'none', background: 'none' }}
-                  >
-                    {blog.title}
-                  </button>
-                  <br />
-                  <small className="text-muted">{blog.date}</small>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="col-md-8">
-            <div className="content mt-4">
-              {blogContent ? (
-                <div dangerouslySetInnerHTML={{ __html: blogContent }} />
-              ) : (
-                <p>Select a blog post from the list to read it.</p>
-              )}
+      <div className="blog-layout">
+        <aside className="blog-sidebar">
+          <h3>Blog Posts</h3>
+          <ul className="blog-post-list">
+            {blogPosts.map(blog => (
+              <li key={blog.id} className={selectedBlog?.id === blog.id ? 'active' : ''}>
+                <button 
+                  onClick={() => handleBlogClick(blog)}
+                  className="blog-post-link"
+                >
+                  <span className="blog-post-title">{blog.title}</span>
+                  <span className="blog-post-date">{blog.date}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </aside>
+        <main className="blog-content">
+          {blogContent ? (
+            <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: blogContent }} />
+          ) : (
+            <div className="blog-placeholder">
+              <p>Select a blog post from the sidebar to read it.</p>
             </div>
-          </div>
-        </div>
-      </section>
+          )}
+        </main>
+      </div>
     </div>
   );
 };
