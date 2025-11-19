@@ -2,6 +2,7 @@
   "name": "websitev2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shubhamcodez.github.io",
   "dependencies": {
     "@picocss/pico": "^2.1.1",
     "@testing-library/dom": "^10.4.0",
