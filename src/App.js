@@ -186,43 +186,43 @@ function AppContent() {
                 <div className="events-content">
                   <div className="events-grid">
                     <div className="event-item">
-                      <img src="/cornell competition.jpg" alt="Cornell Competition" className="event-image" />
+                      <img src="/events/cornell competition.jpg" alt="Cornell Competition" className="event-image" />
                       <div className="event-overlay">
                         <div className="event-description">Placed top 5 in all games played at the Cornell Competition, including market making, estimatathon, trading, and prediction markets.</div>
                       </div>
                     </div>
                     <div className="event-item">
-                      <img src="/cubist hackathon.jpg" alt="Cubist Hackathon 2024" className="event-image" />
+                      <img src="/events/cubist hackathon.jpg" alt="Cubist Hackathon 2024" className="event-image" />
                       <div className="event-overlay">
                         <div className="event-description">Built an application for tourists visiting NYC that uses graph algorithms to optimize for costs and time by leveraging subway timing, optimal paths, and time of day at the Cubist Hackathon 2024.</div>
                       </div>
                     </div>
                     <div className="event-item">
-                      <img src="/ghc24.jpg" alt="GHC 2024" className="event-image" />
+                      <img src="/events/ghc24.jpg" alt="GHC 2024" className="event-image" />
                       <div className="event-overlay">
                         <div className="event-description">Represented NYU Tandon at GHC 2024, helping advance GHC's mission of empowering women in technology. Engaged with students and encouraged them to join NYU as their representative.</div>
                       </div>
                     </div>
                     <div className="event-item">
-                      <img src="/qualcomm lmstudio hackathon.jpg" alt="Qualcomm LM Studio Hackathon" className="event-image" />
+                      <img src="/events/qualcomm lmstudio hackathon.jpg" alt="Qualcomm LM Studio Hackathon" className="event-image" />
                       <div className="event-overlay">
                         <div className="event-description">Built AutoDoc, a tool designed to automatically create documentation and tests for code, and provide an interface to interact and find code snippets across the entire database at the Qualcomm LM Studio Hackathon.</div>
                       </div>
                     </div>
                     <div className="event-item">
-                      <img src="/aicaf24.jpg" alt="AICAF 2024" className="event-image" />
+                      <img src="/events/aicaf24.jpg" alt="AICAF 2024" className="event-image" />
                       <div className="event-overlay">
                         <div className="event-description">Moderated the panel on Reinforcement Learning in Finance at AICAF'24. Volunteered for other parts of the conference.</div>
                       </div>
                     </div>
                     <div className="event-item">
-                      <img src="/cdao 2024.jpg" alt="CDAO 2024" className="event-image" />
+                      <img src="/events/cdao 2024.jpg" alt="CDAO 2024" className="event-image" />
                       <div className="event-overlay">
                         <div className="event-description">Attended CDAO 2024, engaging with data and analytics leaders to discuss AI strategies and quantitative research applications.</div>
                       </div>
                     </div>
                     <div className="event-item">
-                      <img src="/battle of quant 2024.jpg" alt="Battle of Quants 2024" className="event-image" />
+                      <img src="/events/battle of quant 2024.jpg" alt="Battle of Quants 2024" className="event-image" />
                       <div className="event-overlay">
                         <div className="event-description">Participated in Battle of Quants 2024, engaging in discussions with top quant researchers and industry professionals, and debating key topics in quantitative finance.</div>
                       </div>
@@ -243,12 +243,12 @@ function AppContent() {
         </Routes>
 
         <div className="university-logos text-center mt-4">
-          <img src="/NYU.png" alt="New York University" className="university-logo" />
-          <img src="/bvp.png" alt="Bharati Vidyapeeth University" className="university-logo" />
-          <img src="/XAI.avif" alt="xAI" className="university-logo" />
-          <img src="/exituity_logo.png" alt="Exituity" className="university-logo full-width" />
-          <img src="/aiisc.png" alt="AIISC" className="university-logo full-width" />
-          <img src="/undp logo.svg" alt="United Nations Development Programme" className="university-logo" />
+          <img src="/companies/NYU.png" alt="New York University" className="university-logo" />
+          <img src="/companies/bvp.png" alt="Bharati Vidyapeeth University" className="university-logo" />
+          <img src="/companies/XAI.avif" alt="xAI" className="university-logo" />
+          <img src="/companies/exituity_logo.png" alt="Exituity" className="university-logo full-width" />
+          <img src="/companies/aiisc.png" alt="AIISC" className="university-logo full-width" />
+          <img src="/companies/undp logo.svg" alt="United Nations Development Programme" className="university-logo" />
         </div>
         
         <footer className="text-center mt-4">

@@ -13,7 +13,7 @@ const Research = () => {
               <li className="aqi-paper">
                 <div className="aqi-content">
                   <div className="aqi-image">
-                    <img src="/aqi.png" alt="AQI Paper" className="aqi-paper-image" />
+                    <img src="/research/aqi.png" alt="AQI Paper" className="aqi-paper-image" />
                   </div>
                   <div className="aqi-text">
                     <strong>Alignment Quality Index (AQI): Beyond Refusals: AQI as an Intrinsic Alignment Diagnostic via Latent Geometry, Cluster Divergence, and Layer wise Pooled Representations</strong>
@@ -25,7 +25,7 @@ const Research = () => {
               <li className="syseng-paper">
                 <div className="syseng-content">
                   <div className="syseng-image">
-                    <img src="/syseng.png" alt="Systems Engineering Paper" className="syseng-paper-image" />
+                    <img src="/research/syseng.png" alt="Systems Engineering Paper" className="syseng-paper-image" />
                   </div>
                   <div className="syseng-text">
                     <strong>Systems Engineering of Large Language Models for Enterprise Applications</strong>
@@ -37,7 +37,7 @@ const Research = () => {
               <li className="kanfac-paper">
                 <div className="kanfac-content">
                   <div className="kanfac-image">
-                    <img src="/kanfac.png" alt="KAN Factor Models Paper" className="kanfac-paper-image" />
+                    <img src="/research/kanfac.png" alt="KAN Factor Models Paper" className="kanfac-paper-image" />
                   </div>
                   <div className="kanfac-text">
                     <strong>KAN based Autoencoders for Factor Models</strong>
@@ -49,7 +49,7 @@ const Research = () => {
               <li className="factorsbtc-paper">
                 <div className="factorsbtc-content">
                   <div className="factorsbtc-image">
-                    <img src="/factorsbtc.png" alt="Bitcoin Market Risk Factors Paper" className="factorsbtc-paper-image" />
+                    <img src="/research/factorsbtc.png" alt="Bitcoin Market Risk Factors Paper" className="factorsbtc-paper-image" />
                   </div>
                   <div className="factorsbtc-text">
                     <strong>An empirical study of market risk factors for Bitcoin</strong>
@@ -61,7 +61,7 @@ const Research = () => {
               <li className="transformeteth-paper">
                 <div className="transformeteth-content">
                   <div className="transformeteth-image">
-                    <img src="/transformereth.png" alt="Transformer Ethereum Price Prediction Paper" className="transformeteth-paper-image" />
+                    <img src="/research/transformereth.png" alt="Transformer Ethereum Price Prediction Paper" className="transformeteth-paper-image" />
                   </div>
                   <div className="transformeteth-text">
                     <strong>Transformer-based approach for ethereum price prediction using crosscurrency correlation and sentiment analysis</strong>
@@ -73,7 +73,7 @@ const Research = () => {
               <li className="brainvoxgen-paper">
                 <div className="brainvoxgen-content">
                   <div className="brainvoxgen-image">
-                    <img src="/brainvoxgen.png" alt="BrainVoxGen Paper" className="brainvoxgen-paper-image" />
+                    <img src="/research/brainvoxgen.png" alt="BrainVoxGen Paper" className="brainvoxgen-paper-image" />
                   </div>
                   <div className="brainvoxgen-text">
                     <strong>BrainVoxGen: Deep learning framework for synthesis of Ultrasound to MRI</strong>
@@ -86,7 +86,7 @@ const Research = () => {
               <li className="geo-paper">
                 <div className="geo-content">
                   <div className="geo-image">
-                    <img src="/geo.png" alt="Climate Resilience Agriculture Paper" className="geo-paper-image" />
+                    <img src="/research/geo.png" alt="Climate Resilience Agriculture Paper" className="geo-paper-image" />
                   </div>
                   <div className="geo-text">
                     <strong>Identifying Climate-resilient Agricultural Practices in India Through Positive Deviance Analysis of Soil Moisture, Temperature, and Precipitation Anomalies in Telangana</strong>
