@@ -146,7 +146,7 @@ function AppContent() {
                     <p><strong>Experience:</strong></p>
                     <ul>
                       <li><strong>xAI</strong> — AI Quant Tutor (Current): Contributing to AI training and improvement initiatives</li>
-                      <li><strong>Exituity</strong> — Founder (Current): Building AI financial navigator with forecasting, valuation, and real-time insights</li>
+                      <li><strong>Exituity</strong> — Founder (Current): Building an AI-powered business navigator with forecasting, valuation, and real-time insights</li>
                       <li><strong>GoQuant</strong> — Quant Researcher (Sep 2024 – Sep 2025): Directed alpha research and deployed systematic trading strategies</li>
                       <li><strong>Artificial Intelligence Institute of South Carolina (AIISC)</strong> — AI Researcher (Sep 2024 – May 2025): Co-authored Alignment Quality Index paper and fine-tuned LLM models for alignment research</li>
                       <li><strong>New York University</strong> — AI Product Management Mentor (May 2024 – May 2025): Mentored students and orchestrated cross-institution collaborations</li>
@@ -163,6 +163,21 @@ function AppContent() {
                 </div>
                 <div className="profile-image-container">
                   <img src="/img_nvidia.png" alt="Shubham Singh" className="profile-image" />
+                </div>
+              </div>
+
+              <div className="events-box mt-4">
+                <h3>Research Interests</h3>
+                <div className="justified-text">
+                  <p>
+                    My research interests span quantitative finance, machine learning, statistical modeling, and algorithmic trading. I am particularly interested in interdisciplinary approaches that integrate methodologies from applied probability, statistics, and optimization to address high-stakes decision-making problems in modern large-scale systems, particularly in financial and economic domains. Current research topics include:
+                  </p>
+                  <ul>
+                    <li>LLM finetuning and alignment</li>
+                    <li>Quantum semantic embedding of LLMs</li>
+                    <li>Market making & arbitrage strategies</li>
+                    <li>Optimal control</li>
+                  </ul>
                 </div>
               </div>
 
@@ -200,6 +215,18 @@ function AppContent() {
                         <div className="event-description">Moderated the panel on Reinforcement Learning in Finance at AICAF'24. Volunteered for other parts of the conference.</div>
                       </div>
                     </div>
+                    <div className="event-item">
+                      <img src="/cdao 2024.jpg" alt="CDAO 2024" className="event-image" />
+                      <div className="event-overlay">
+                        <div className="event-description">Attended CDAO 2024, engaging with data and analytics leaders to discuss AI strategies and quantitative research applications.</div>
+                      </div>
+                    </div>
+                    <div className="event-item">
+                      <img src="/battle of quant 2024.jpg" alt="Battle of Quants 2024" className="event-image" />
+                      <div className="event-overlay">
+                        <div className="event-description">Participated in Battle of Quants 2024, engaging in discussions with top quant researchers and industry professionals, and debating key topics in quantitative finance.</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -221,6 +248,7 @@ function AppContent() {
           <img src="/XAI.avif" alt="xAI" className="university-logo" />
           <img src="/exituity_logo.png" alt="Exituity" className="university-logo full-width" />
           <img src="/aiisc.png" alt="AIISC" className="university-logo full-width" />
+          <img src="/undp logo.svg" alt="United Nations Development Programme" className="university-logo" />
         </div>
         
         <footer className="text-center mt-4">

@@ -6,18 +6,6 @@ const Research = () => {
       <section>
         <h1>Research</h1>
         
-        <div className="justified-text">
-          <p>
-            My research interests span quantitative finance, machine learning, statistical modeling, and algorithmic trading. I am particularly interested in interdisciplinary approaches that integrate methodologies from applied probability, statistics, and optimization to address high-stakes decision-making problems in modern large-scale systems, particularly in financial and economic domains. Current research topics include:
-          </p>
-          <ul>
-            <li>LLM finetuning and alignment</li>
-            <li>Quantum semantic embedding of LLMs</li>
-            <li>Market making & arbitrage strategies</li>
-            <li>Optimal control</li>
-          </ul>
-        </div>
-
         <div className="publications-box">
           <h3>Working Papers and Preprints</h3>
           <div className="publications-content">
