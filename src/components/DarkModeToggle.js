@@ -50,7 +50,7 @@ const DarkModeToggle = () => {
       }}
       aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {isDarkMode ? '☀️' : '🌙'} {isDarkMode ? 'Light' : 'Dark'}
+      {isDarkMode ? 'Light' : 'Dark'}
     </button>
   );
 };

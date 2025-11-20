@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Research = () => {
+const Research = ({ hideTitle = false }) => {
   return (
     <div className="container">
       <section>
-        <h1>Research</h1>
+        {!hideTitle && <h1>Research</h1>}
         
         <div className="publications-box">
           <h3>Working Papers and Preprints</h3>

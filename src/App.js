@@ -122,7 +122,6 @@ function AppContent() {
             <nav className="container-fluid">
               <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/research">Research</Link></li>
                 <li><Link to="/casual">Blog</Link></li>
               </ul>
             </nav>
@@ -138,26 +137,8 @@ function AppContent() {
                     <p>
                       I am an engineer specializing in machine learning, AI, engineering, and quantitative research. My work encompasses building AI solutions, developing trading strategies, and constructing end-to-end systems—from predictive pricing models and algorithmic trading strategies to robust trading systems, risk frameworks, and scalable ML pipelines that transform data ingestion and feature engineering into real-time AI model deployment.
                     </p>
-                    <p><strong>Education:</strong></p>
-                    <ul>
-                      <li>M.S. in Computer Engineering, New York University (Sep 2023 – Aug 2025)</li>
-                      <li>B.S. in Computer Science, Bharati Vidyapeeth University (Jul 2019 – Jun 2023)</li>
-                    </ul>
-                    <p><strong>Experience:</strong></p>
-                    <ul>
-                      <li><strong>xAI</strong> — AI Quant Tutor (Current): Contributing to AI training and improvement initiatives</li>
-                      <li><strong>Exituity</strong> — Founder (Current): Building an AI-powered business navigator with forecasting, valuation, and real-time insights</li>
-                      <li><strong>GoQuant</strong> — Quant Researcher (Sep 2024 – Sep 2025): Directed alpha research and deployed systematic trading strategies</li>
-                      <li><strong>Artificial Intelligence Institute of South Carolina (AIISC)</strong> — AI Researcher (Sep 2024 – May 2025): Co-authored Alignment Quality Index paper and fine-tuned LLM models for alignment research</li>
-                      <li><strong>New York University</strong> — AI Product Management Mentor (May 2024 – May 2025): Mentored students and orchestrated cross-institution collaborations</li>
-                      <li><strong>QuantFarming</strong> — Machine Learning Intern (May 2024 - July 2024): Engineered backtesting and optimization frameworks for trading strategies</li>
-                      <li><strong>Symbiosis Institute of Medical Imaging</strong> — AI Research Intern (October 2022 - Mar 2023): Developed deep learning pipeline for medical image synthesis</li>
-                      <li><strong>United Nations Development Programme</strong> — Data Science Intern (July 2022 - January 2023): Deployed ML models for geospatial analysis and NLP pipelines for policy insights</li>
-                      <li><strong>Dexterity Global Group</strong> — Management Intern (May 2022 - June 2022)</li>
-                      <li><strong>Algorithmic Biologics</strong> — Full Stack Intern (Sep 2021 - Dec 2021)</li>
-                      <li><strong>DSC BVUCEOP</strong> — Member (Oct 2019 - June 2023)</li>
-                      <li><strong>Entrepreneurship Development Cell</strong> — Member (July 2019 - June 2020)</li>
-                    </ul>
+                    <p><strong>Education:</strong> I hold a Master's in Computer Engineering from New York University and a Bachelor's in Computer Science from Bharati Vidyapeeth University.</p>
+                    <p><strong>Experience:</strong> I'm currently an AI Quant Tutor at xAI, working on AI training and improvement initiatives. I'm also the founder of Exituity, where I'm building an AI-powered business navigator with forecasting, valuation, and real-time insights. I've worked as a Quant Researcher at Blockhouse and GoQuant, directing alpha research and deploying systematic trading strategies. As an AI Researcher at the Artificial Intelligence Institute of South Carolina, I co-authored the Alignment Quality Index paper and fine-tuned LLM models for alignment research. At NYU, I've mentored students as an AI Product Management Mentor and facilitated cross-institution collaborations. Earlier, I interned at QuantFarming building backtesting and optimization frameworks for trading strategies, at Symbiosis Institute of Medical Imaging developing deep learning pipelines for medical image synthesis, and at the United Nations Development Programme deploying ML models for geospatial analysis and NLP pipelines. I've also worked with Dexterity Global Group and Algorithmic Biologics, and was involved with DSC BVUCEOP and the Entrepreneurship Development Cell during my undergraduate years.</p>
                     <p>Email: shubham.singh (at) nyu (dot) edu</p>
                   </div>
                 </div>
@@ -180,6 +161,8 @@ function AppContent() {
                   </ul>
                 </div>
               </div>
+
+              <Research hideTitle={true} />
 
               <div className="events-box mt-4">
                 <h3>Events & Competitions</h3>
