@@ -78,6 +78,112 @@ const Casual = () => {
     setBlogContent(getBlogContent(blog));
   };
 
+  // Add SEO meta tags and Article schema for blog posts
+  useEffect(() => {
+    if (selectedBlog) {
+      const baseUrl = "https://shubhamcodez.github.io";
+      
+      // Update document title
+      document.title = `${selectedBlog.title} | Casual Inference | Shubham Singh NYU`;
+      
+      // Helper function to update or create meta tag
+      const updateMetaTag = (name, content, attribute = 'name') => {
+        let element = document.querySelector(`meta[${attribute}="${name}"]`);
+        if (!element) {
+          element = document.createElement('meta');
+          element.setAttribute(attribute, name);
+          document.head.appendChild(element);
+        }
+        element.setAttribute('content', content);
+      };
+
+      // Update meta description
+      updateMetaTag('description', `${selectedBlog.description} - Blog post by Shubham Singh NYU on Casual Inference.`);
+      
+      // Update keywords with blog-specific terms
+      const keywords = `Shubham Singh, Shubham Singh NYU, ${selectedBlog.title}, Casual Inference, blog, ${selectedBlog.description.split(' ').slice(0, 5).join(', ')}, quantitative finance, machine learning`;
+      updateMetaTag('keywords', keywords);
+      
+      // Update Open Graph tags
+      updateMetaTag('og:title', `${selectedBlog.title} | Casual Inference | Shubham Singh NYU`, 'property');
+      updateMetaTag('og:description', selectedBlog.description, 'property');
+      updateMetaTag('og:type', 'article', 'property');
+      updateMetaTag('og:url', `${baseUrl}/#/casual`, 'property');
+      updateMetaTag('og:image', `${baseUrl}/img_nvidia.png`, 'property');
+      
+      // Update Twitter Card tags
+      updateMetaTag('twitter:title', `${selectedBlog.title} | Shubham Singh NYU`);
+      updateMetaTag('twitter:description', selectedBlog.description);
+      updateMetaTag('twitter:card', 'summary_large_image');
+      updateMetaTag('twitter:image', `${baseUrl}/img_nvidia.png`);
+      
+      // Update canonical URL
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (!canonicalLink) {
+        canonicalLink = document.createElement('link');
+        canonicalLink.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonicalLink);
+      }
+      canonicalLink.setAttribute('href', `${baseUrl}/#/casual`);
+      
+      // Add article meta tags
+      updateMetaTag('article:published_time', selectedBlog.date, 'property');
+      updateMetaTag('article:author', 'Shubham Singh NYU', 'property');
+      updateMetaTag('article:section', 'Blog', 'property');
+      updateMetaTag('article:tag', 'Quantitative Finance', 'property');
+      updateMetaTag('article:tag', 'Machine Learning', 'property');
+      
+      // Enhanced Article schema
+      const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": selectedBlog.title,
+        "description": selectedBlog.description,
+        "datePublished": selectedBlog.date,
+        "dateModified": selectedBlog.date,
+        "author": {
+          "@type": "Person",
+          "name": "Shubham Singh",
+          "alternateName": [
+            "Shubham Singh NYU",
+            "Shubham Singh DAV Kharghar",
+            "Shubham Singh Bharati Vidyapeeth"
+          ],
+          "url": baseUrl,
+          "sameAs": [
+            "https://www.linkedin.com/in/shubhamsinghnyu",
+            "https://github.com/shubhamcodez",
+            "https://www.kaggle.com/shubhamcodez"
+          ]
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Shubham Singh",
+          "alternateName": "Shubham Singh NYU",
+          "url": baseUrl
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `${baseUrl}/#/casual`
+        },
+        "url": `${baseUrl}/#/casual`,
+        "image": `${baseUrl}/img_nvidia.png`,
+        "keywords": keywords
+      };
+
+      // Remove existing article schema
+      const existingScripts = document.querySelectorAll('script[data-article-schema="true"]');
+      existingScripts.forEach(script => script.remove());
+
+      // Add new article schema
+      const script = document.createElement('script');
+      script.setAttribute('type', 'application/ld+json');
+      script.setAttribute('data-article-schema', 'true');
+      script.textContent = JSON.stringify(articleSchema);
+      document.head.appendChild(script);
+    }
+  }, [selectedBlog]);
+
   useEffect(() => {
     setBlogPosts(memoizedBlogPosts);
     // Automatically select the latest blog post (first in the array) on initial load
@@ -95,7 +201,7 @@ const Casual = () => {
       </header>
 
       <section id="about" className="my-4">
-        <p>This is my personal blog where I share insights on various topics. Feel free to explore!</p>
+        <p>Welcome to Casual Inference, the personal blog of Shubham Singh NYU. Here I share insights on quantitative finance, machine learning, AI, and technology. Feel free to explore!</p>
       </section>
 
       <div className="blog-layout">
@@ -116,8 +222,16 @@ const Casual = () => {
           </ul>
         </aside>
         <main className="blog-content">
-          {blogContent ? (
-            <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: blogContent }} />
+          {blogContent && selectedBlog ? (
+            <article itemScope itemType="https://schema.org/BlogPosting">
+              <meta itemProp="headline" content={selectedBlog.title} />
+              <meta itemProp="datePublished" content={selectedBlog.date} />
+              <div itemProp="author" itemScope itemType="https://schema.org/Person">
+                <meta itemProp="name" content="Shubham Singh" />
+                <meta itemProp="alternateName" content="Shubham Singh NYU" />
+              </div>
+              <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: blogContent }} />
+            </article>
           ) : (
             <div className="blog-placeholder">
               <p>Select a blog post from the sidebar to read it.</p>
