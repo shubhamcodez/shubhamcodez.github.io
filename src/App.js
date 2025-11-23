@@ -1,5 +1,5 @@
 import './App.css';
-import { HashRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Quant from './components/Quant';
 import Resume from './components/Resume';
 import Casual from './components/Casual';
@@ -257,6 +257,19 @@ function AppContent() {
 }
 
 function App() {
+  // Handle GitHub Pages routing
+  // If the URL contains '/?/', extract the path from the query string
+  const pathname = window.location.pathname;
+  const search = window.location.search;
+  
+  // Check if we're on GitHub Pages with the redirect format
+  if (search.includes('/?/')) {
+    const path = search.split('/?/')[1].split('&')[0].replace(/~and~/g, '&');
+    if (path) {
+      window.history.replaceState({}, '', pathname + path + window.location.hash);
+    }
+  }
+
   return (
     <Router>
       <AppContent />
