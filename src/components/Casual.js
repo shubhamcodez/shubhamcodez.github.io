@@ -294,6 +294,36 @@ const Casual = () => {
             </div>
           )}
         </main>
+
+        {/* Right sidebar for ads */}
+        <aside className="blog-sidebar-right">
+          {/* Ad unit at the top */}
+          <div className="ad-container ad-top">
+            <AdSense 
+              adSlot="1234567890" 
+              adFormat="auto"
+              style={{ minHeight: '250px' }}
+            />
+          </div>
+
+          {/* Ad unit in the middle */}
+          <div className="ad-container ad-middle">
+            <AdSense 
+              adSlot="1234567890" 
+              adFormat="auto"
+              style={{ minHeight: '250px' }}
+            />
+          </div>
+
+          {/* Ad unit at the bottom */}
+          <div className="ad-container ad-bottom">
+            <AdSense 
+              adSlot="1234567890" 
+              adFormat="auto"
+              style={{ minHeight: '250px' }}
+            />
+          </div>
+        </aside>
       </div>
     </div>
   );

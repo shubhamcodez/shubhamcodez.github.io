@@ -131,7 +131,7 @@ function AppContent() {
         
         <Routes>
           <Route path="/" element={
-            <div>
+            <div className="home-page-content">
               <div className="intro-section">
                 <article className="intro-content">
                   <div className="justified-text">
@@ -207,42 +207,64 @@ function AppContent() {
   );
 }
 
+// Flag to prevent multiple redirects
+let redirectProcessed = false;
+
 function App() {
   // Handle GitHub Pages routing - only run once on mount
   useEffect(() => {
+    // Prevent multiple redirects
+    if (redirectProcessed) {
+      return;
+    }
+    
     const pathname = window.location.pathname;
     const search = window.location.search;
     const hash = window.location.hash;
     
     // Check if we're on GitHub Pages with the redirect format /?/path
+    // This happens when 404.html redirects /casual to /?/casual
     if (search.includes('/?/')) {
+      redirectProcessed = true; // Mark as processed immediately to prevent loops
+      
       try {
         // Extract the path from the query string format: /?/casual&other=params
         const queryPart = search.split('/?/')[1];
         if (queryPart) {
           // Split by & to get the path part (before any query params)
+          // The path might contain ~and~ which should be converted back to &
           const pathParts = queryPart.split('&');
-          // The first part is the path, replace ~and~ back to &
-          let path = pathParts[0].replace(/~and~/g, '&');
+          let path = pathParts[0];
+          
+          // Replace ~and~ back to & in the path
+          path = path.replace(/~and~/g, '&');
+          
+          // Clean up any malformed paths (remove multiple ~and~ sequences)
+          path = path.replace(/~and~+/g, '');
           
           // Ensure path starts with /
           if (path && !path.startsWith('/')) {
             path = '/' + path;
           }
           
-          // Only redirect if we have a valid path and it's different from current
-          if (path && path !== pathname) {
-            // Build the new URL - for GitHub Pages, we need to keep the base path
-            // If pathname is just '/', use it directly, otherwise use the base
-            const basePath = pathname === '/' ? '' : pathname.split('/').slice(0, 2).join('/');
+          // Only redirect if we have a valid, non-empty path
+          if (path && path !== '/' && path !== pathname && !path.includes('~and~')) {
+            // Use replaceState to update URL without reload
+            // This allows React Router to handle the route change
+            const basePath = pathname.split('/').slice(0, 2).join('/');
             const newUrl = basePath + path + hash;
             window.history.replaceState({}, '', newUrl);
-            // Force a reload to ensure React Router picks up the new path
-            window.location.reload();
+            // Trigger a popstate event so React Router picks up the change
+            window.dispatchEvent(new PopStateEvent('popstate', { state: {} }));
+          } else {
+            // If path is invalid, clean up the URL
+            window.history.replaceState({}, '', pathname + hash);
           }
         }
       } catch (error) {
         console.error('Error handling GitHub Pages redirect:', error);
+        // If redirect fails, clean up the URL
+        window.history.replaceState({}, '', pathname + hash);
       }
     }
   }, []); // Empty dependency array - only run once on mount

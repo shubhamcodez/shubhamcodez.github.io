@@ -1,26 +1,26 @@
 .App {
   text-align: left;
-  max-width: 1400px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 2rem;
 }
 
 /* Responsive spacing */
 @media (max-width: 768px) {
   .App {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
     padding-top: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .App {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     padding-top: 1rem;
   }
 }
@@ -38,6 +38,26 @@ html {
 /* Hide scrollbar for IE and Edge */
 body {
   -ms-overflow-style: none;
+}
+
+.home-page-content {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Responsive padding for home page */
+@media (max-width: 768px) {
+  .home-page-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 .intro-section {
@@ -147,9 +167,21 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 !important;
+}
+
+/* Override Pico CSS container padding */
+.container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Override any Pico CSS main element padding */
+main {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 section {
@@ -863,11 +895,22 @@ nav ul li a.active {
   }
 }
 
+/* Responsive blog layout */
+@media (max-width: 1200px) {
+  .blog-layout {
+    grid-template-columns: 300px 1fr;
+  }
+  
+  .blog-sidebar-right {
+    display: none;
+  }
+}
+
 /* Blog Layout Styles */
 .blog-layout {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 40px;
+  grid-template-columns: 300px 1fr 300px;
+  gap: 15px;
   margin-top: 30px;
   align-items: start;
 }
@@ -879,6 +922,16 @@ nav ul li a.active {
   border: 1px solid var(--muted-border-color);
   border-radius: 8px;
   padding: 20px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.blog-sidebar-right {
+  position: sticky;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   max-height: calc(100vh - 100px);
   overflow-y: auto;
 }
@@ -982,6 +1035,10 @@ nav ul li a.active {
   margin-bottom: 20px;
 }
 
+.ad-middle {
+  margin: 20px 0;
+}
+
 .ad-bottom {
   margin-top: 20px;
 }
@@ -1017,14 +1074,29 @@ nav ul li a.active {
 }
 
 /* Responsive design for blog layout */
+@media (max-width: 1200px) {
+  .blog-layout {
+    grid-template-columns: 300px 1fr;
+    gap: 15px;
+  }
+  
+  .blog-sidebar-right {
+    display: none;
+  }
+}
+
 @media (max-width: 968px) {
   .blog-layout {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 15px;
   }
   
   .blog-sidebar {
     position: static;
     max-height: none;
+  }
+  
+  .blog-sidebar-right {
+    display: none;
   }
 }
