@@ -1,4 +1,5 @@
 import './App.css';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Quant from './components/Quant';
 import Resume from './components/Resume';
@@ -207,18 +208,44 @@ function AppContent() {
 }
 
 function App() {
-  // Handle GitHub Pages routing
-  // If the URL contains '/?/', extract the path from the query string
-  const pathname = window.location.pathname;
-  const search = window.location.search;
-  
-  // Check if we're on GitHub Pages with the redirect format
-  if (search.includes('/?/')) {
-    const path = search.split('/?/')[1].split('&')[0].replace(/~and~/g, '&');
-    if (path) {
-      window.history.replaceState({}, '', pathname + path + window.location.hash);
+  // Handle GitHub Pages routing - only run once on mount
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const search = window.location.search;
+    const hash = window.location.hash;
+    
+    // Check if we're on GitHub Pages with the redirect format /?/path
+    if (search.includes('/?/')) {
+      try {
+        // Extract the path from the query string format: /?/casual&other=params
+        const queryPart = search.split('/?/')[1];
+        if (queryPart) {
+          // Split by & to get the path part (before any query params)
+          const pathParts = queryPart.split('&');
+          // The first part is the path, replace ~and~ back to &
+          let path = pathParts[0].replace(/~and~/g, '&');
+          
+          // Ensure path starts with /
+          if (path && !path.startsWith('/')) {
+            path = '/' + path;
+          }
+          
+          // Only redirect if we have a valid path and it's different from current
+          if (path && path !== pathname) {
+            // Build the new URL - for GitHub Pages, we need to keep the base path
+            // If pathname is just '/', use it directly, otherwise use the base
+            const basePath = pathname === '/' ? '' : pathname.split('/').slice(0, 2).join('/');
+            const newUrl = basePath + path + hash;
+            window.history.replaceState({}, '', newUrl);
+            // Force a reload to ensure React Router picks up the new path
+            window.location.reload();
+          }
+        }
+      } catch (error) {
+        console.error('Error handling GitHub Pages redirect:', error);
+      }
     }
-  }
+  }, []); // Empty dependency array - only run once on mount
 
   return (
     <Router>
