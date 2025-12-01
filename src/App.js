@@ -214,11 +214,29 @@ function App() {
     const search = window.location.search;
     const hash = window.location.hash;
     
+    // If URL is already clean (no /?/ redirect format), do nothing
+    if (!search.includes('/?/') && !search.includes('~and~')) {
+      return;
+    }
+    
+    // Use sessionStorage to prevent multiple redirects in the same session
+    const redirectKey = 'github-pages-redirect-processed';
+    const redirectTimestamp = sessionStorage.getItem(redirectKey);
+    const now = Date.now();
+    
+    // If we processed a redirect recently (within last 2 seconds), skip to prevent loops
+    if (redirectTimestamp && (now - parseInt(redirectTimestamp)) < 2000) {
+      return;
+    }
+    
+    // Mark current time
+    sessionStorage.setItem(redirectKey, now.toString());
+    
     // Detect malformed URLs with excessive ~and~ sequences (infinite loop indicator)
     if (search.includes('~and~') && (search.match(/~and~/g) || []).length > 5) {
       // Clean up malformed URL immediately
       const cleanPath = pathname.includes('casual') ? '/casual' : (pathname || '/');
-      window.history.replaceState({}, '', cleanPath + hash);
+      window.location.replace(cleanPath + hash);
       return;
     }
     
@@ -241,23 +259,20 @@ function App() {
           // Validate path - must be clean and reasonable length
           if (path && path !== '/' && path.length < 100 && !path.includes('~and~')) {
             // Build clean URL
-            const basePath = pathname.split('/').slice(0, 2).join('/');
+            const basePath = pathname === '/' ? '' : pathname.split('/').slice(0, 2).join('/');
             const newUrl = basePath + path + hash;
             
-            // Only redirect if different from current pathname
-            if (newUrl !== window.location.href) {
-              window.history.replaceState({}, '', newUrl);
-              // Don't reload - let React Router handle it
-            }
+            // Use replace to navigate (prevents back button issues)
+            window.location.replace(newUrl);
           } else {
             // Invalid path - clean up URL
-            window.history.replaceState({}, '', pathname + hash);
+            window.location.replace(pathname + hash);
           }
         }
       } catch (error) {
         console.error('Error handling GitHub Pages redirect:', error);
         // Clean up on error
-        window.history.replaceState({}, '', pathname + hash);
+        window.location.replace(pathname + hash);
       }
     }
   }, []); // Run only once on mount
