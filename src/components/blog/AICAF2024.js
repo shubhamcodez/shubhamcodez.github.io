@@ -4,11 +4,11 @@ const AICAF2024 = {
   date: "2024-05-18",
   description: "Reflecting on moderating the Reinforcement Learning in Finance panel at AICAF'24 and volunteering at the conference.",
   content: `
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div class="blog-image-container">
       <img 
         src="/events/aicaf24.jpg" 
         alt="Shubham Singh NYU moderating panel at AICAF 2024" 
-        style="max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
+        class="blog-image"
       />
     </div>
 

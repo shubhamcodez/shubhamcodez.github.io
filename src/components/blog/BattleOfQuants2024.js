@@ -4,11 +4,11 @@ const BattleOfQuants2024 = {
   date: "2024-11-08",
   description: "Reflecting on participating in Battle of Quants 2024, engaging in discussions with top quant researchers and debating key topics in quantitative finance.",
   content: `
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div class="blog-image-container">
       <img 
         src="/events/battle of quant 2024.jpg" 
         alt="Shubham Singh NYU at Battle of Quants 2024" 
-        style="max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
+        class="blog-image"
       />
     </div>
 

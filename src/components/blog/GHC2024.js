@@ -4,11 +4,11 @@ const GHC2024 = {
   date: "2024-10-05",
   description: "Reflecting on my experience representing NYU Tandon at GHC 2024, helping advance the mission of empowering women in technology.",
   content: `
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div class="blog-image-container">
       <img 
         src="/events/ghc24.jpg" 
         alt="Shubham Singh NYU representing NYU Tandon at GHC 2024" 
-        style="max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
+        class="blog-image"
       />
     </div>
 

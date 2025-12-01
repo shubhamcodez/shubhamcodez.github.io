@@ -5,11 +5,11 @@ const AnimalFarmBlog = {
     description:
         "A clear, engaging walkthrough of George Orwell's Animal Farm plot—how an idealistic animal rebellion slowly turns into a new tyranny.",
     content: `
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div class="blog-image-container">
       <img 
-        src="/animal%20farm.jpg" 
+        src="/blog images/animal farm.jpg" 
         alt="Animal Farm illustration" 
-        style="width: 300px; height: 300px; object-fit: cover; object-position: top; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
+        class="blog-image"
       />
     </div>
 

@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import AdSense from './AdSense';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import JourneyIntoQuantFinance from './blog/JourneyIntoQuantFinance';
 import MLInTrading from './blog/MLInTrading';
 import FutureOfAlgoTrading from './blog/FutureOfAlgoTrading';
@@ -22,6 +21,7 @@ import QualcommHackathon from './blog/QualcommHackathon';
 import AICAF2024 from './blog/AICAF2024';
 import CDAO2024 from './blog/CDAO2024';
 import BattleOfQuants2024 from './blog/BattleOfQuants2024';
+import LucidEquityResearch from './blog/LucidEquityResearch';
 
 // Blog posts data imported from individual files
 const allBlogPosts = [
@@ -46,7 +46,8 @@ const allBlogPosts = [
   QualcommHackathon,
   AICAF2024,
   CDAO2024,
-  BattleOfQuants2024
+  BattleOfQuants2024,
+  LucidEquityResearch
 ].map(post => ({
   id: post.id,
   title: post.title,
@@ -63,11 +64,12 @@ const Casual = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [blogContent, setBlogContent] = useState('');
+  const hasInitialized = useRef(false);
 
   // Use useMemo to prevent unnecessary re-renders
   const memoizedBlogPosts = useMemo(() => sampleBlogPosts, []);
 
-  const getBlogContent = (blog) => {
+  const getBlogContent = useCallback((blog) => {
     const blogMap = {
       1: JourneyIntoQuantFinance,
       2: MLInTrading,
@@ -90,7 +92,8 @@ const Casual = () => {
       19: QualcommHackathon,
       20: AICAF2024,
       21: CDAO2024,
-      22: BattleOfQuants2024
+      22: BattleOfQuants2024,
+      23: LucidEquityResearch
     };
 
     const blogPost = blogMap[blog.id];
@@ -99,12 +102,12 @@ const Casual = () => {
       <p><em>Published on ${blog.date}</em></p>
       <p>${blog.description}</p>
     `;
-  };
+  }, []);
 
-  const handleBlogClick = (blog) => {
+  const handleBlogClick = useCallback((blog) => {
     setSelectedBlog(blog);
     setBlogContent(getBlogContent(blog));
-  };
+  }, [getBlogContent]);
 
   // Add SEO meta tags and Article schema for blog posts
   useEffect(() => {
@@ -136,7 +139,7 @@ const Casual = () => {
       updateMetaTag('og:title', `${selectedBlog.title} | Casual Inference | Shubham Singh NYU`, 'property');
       updateMetaTag('og:description', selectedBlog.description, 'property');
       updateMetaTag('og:type', 'article', 'property');
-      updateMetaTag('og:url', `${baseUrl}/#/casual`, 'property');
+      updateMetaTag('og:url', `${baseUrl}/#/blog`, 'property');
       updateMetaTag('og:image', `${baseUrl}/img_nvidia.png`, 'property');
 
       // Update Twitter Card tags
@@ -152,7 +155,7 @@ const Casual = () => {
         canonicalLink.setAttribute('rel', 'canonical');
         document.head.appendChild(canonicalLink);
       }
-      canonicalLink.setAttribute('href', `${baseUrl}/#/casual`);
+      canonicalLink.setAttribute('href', `${baseUrl}/#/blog`);
 
       // Add article meta tags
       updateMetaTag('article:published_time', selectedBlog.date, 'property');
@@ -192,9 +195,9 @@ const Casual = () => {
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": `${baseUrl}/#/casual`
+          "@id": `${baseUrl}/#/blog`
         },
-        "url": `${baseUrl}/#/casual`,
+        "url": `${baseUrl}/#/blog`,
         "image": `${baseUrl}/img_nvidia.png`,
         "keywords": keywords
       };
@@ -212,15 +215,18 @@ const Casual = () => {
     }
   }, [selectedBlog]);
 
+  // Initialize blog posts and select the first one on mount
   useEffect(() => {
     setBlogPosts(memoizedBlogPosts);
     // Automatically select the latest blog post (first in the array) on initial load
-    if (memoizedBlogPosts.length > 0 && selectedBlog === null) {
+    // Use ref to ensure this only runs once
+    if (!hasInitialized.current && memoizedBlogPosts.length > 0) {
+      hasInitialized.current = true;
       const latestBlog = memoizedBlogPosts[0];
-      handleBlogClick(latestBlog);
+      setSelectedBlog(latestBlog);
+      setBlogContent(getBlogContent(latestBlog));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [memoizedBlogPosts, getBlogContent]);
 
   return (
     <div className="container">
@@ -230,52 +236,20 @@ const Casual = () => {
 
       <div className="blog-layout">
         <aside className="blog-sidebar">
-          {/* Ad unit at the top */}
-          <div className="ad-container ad-top">
-            <AdSense 
-              adSlot="1234567890" 
-              adFormat="auto"
-              style={{ minHeight: '250px' }}
-            />
-          </div>
-
           <h3>Blog Posts</h3>
           <ul className="blog-post-list">
-            {blogPosts.map((blog, index) => (
-              <React.Fragment key={blog.id}>
-                <li className={selectedBlog?.id === blog.id ? 'active' : ''}>
-                  <button
-                    onClick={() => handleBlogClick(blog)}
-                    className="blog-post-link"
-                  >
-                    <span className="blog-post-title">{blog.title}</span>
-                    <span className="blog-post-date">{blog.date}</span>
-                  </button>
-                </li>
-                {/* Ad unit after every 5th post */}
-                {index > 0 && (index + 1) % 5 === 0 && (
-                  <li className="ad-item">
-                    <div className="ad-container">
-                      <AdSense 
-                        adSlot="1234567890" 
-                        adFormat="auto"
-                        style={{ minHeight: '250px' }}
-                      />
-                    </div>
-                  </li>
-                )}
-              </React.Fragment>
+            {blogPosts.map(blog => (
+              <li key={blog.id} className={selectedBlog?.id === blog.id ? 'active' : ''}>
+                <button
+                  onClick={() => handleBlogClick(blog)}
+                  className="blog-post-link"
+                >
+                  <span className="blog-post-title">{blog.title}</span>
+                  <span className="blog-post-date">{blog.date}</span>
+                </button>
+              </li>
             ))}
           </ul>
-
-          {/* Ad unit at the bottom */}
-          <div className="ad-container ad-bottom">
-            <AdSense 
-              adSlot="1234567890" 
-              adFormat="auto"
-              style={{ minHeight: '250px' }}
-            />
-          </div>
         </aside>
         <main className="blog-content">
           {blogContent && selectedBlog ? (
@@ -294,36 +268,6 @@ const Casual = () => {
             </div>
           )}
         </main>
-
-        {/* Right sidebar for ads */}
-        <aside className="blog-sidebar-right">
-          {/* Ad unit at the top */}
-          <div className="ad-container ad-top">
-            <AdSense 
-              adSlot="1234567890" 
-              adFormat="auto"
-              style={{ minHeight: '250px' }}
-            />
-          </div>
-
-          {/* Ad unit in the middle */}
-          <div className="ad-container ad-middle">
-            <AdSense 
-              adSlot="1234567890" 
-              adFormat="auto"
-              style={{ minHeight: '250px' }}
-            />
-          </div>
-
-          {/* Ad unit at the bottom */}
-          <div className="ad-container ad-bottom">
-            <AdSense 
-              adSlot="1234567890" 
-              adFormat="auto"
-              style={{ minHeight: '250px' }}
-            />
-          </div>
-        </aside>
       </div>
     </div>
   );

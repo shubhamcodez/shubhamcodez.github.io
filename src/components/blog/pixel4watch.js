@@ -4,11 +4,11 @@ const Pixel4WatchReview = {
     date: "2025-11-29",
     description: "A more engaging, story-driven review of the Pixel 4 Watch—covering step tracking, heart rate precision, sleep insights, design, and battery life.",
     content: `
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div class="blog-image-container">
       <img 
-        src="/pixel%204.jpg" 
+        src="/blog images/pixel 4.jpg" 
         alt="Pixel 4 Watch" 
-        style="max-width: 300px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
+        class="blog-image"
       />
     </div>
 

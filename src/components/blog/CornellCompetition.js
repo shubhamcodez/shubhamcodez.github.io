@@ -4,11 +4,11 @@ const CornellCompetition = {
   date: "2024-03-15",
   description: "Reflecting on my top 5 placement across all games at the Cornell Competition, including market making, estimatathon, trading, and prediction markets.",
   content: `
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div class="blog-image-container">
       <img 
         src="/events/cornell competition.jpg" 
         alt="Shubham Singh NYU at Cornell Competition - Top 5 placement" 
-        style="max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
+        class="blog-image" 
       />
     </div>
 

@@ -4,11 +4,11 @@ const CubistHackathon = {
   date: "2024-06-10",
   description: "Building an application for NYC tourists using graph algorithms to optimize subway routes for cost and time at the Cubist Hackathon 2024.",
   content: `
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div class="blog-image-container">
       <img 
         src="/events/cubist hackathon.jpg" 
         alt="Shubham Singh NYU at Cubist Hackathon 2024" 
-        style="max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
+        class="blog-image"
       />
     </div>
 

@@ -4,8 +4,8 @@ const FrankensteinReview = {
   date: "2025-11-18",
   description: "A review of Guillermo del Toro's stunning adaptation, exploring the moral grayness of creator and creation.",
   content: `
-    <div style="text-align: center; margin-bottom: 30px;">
-      <img src="/images/frankenstein.jpg" alt="Guillermo del Toro's Frankenstein" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+    <div class="blog-image-container">
+      <img src="/blog images/frankenstein.jpg" alt="Guillermo del Toro's Frankenstein" class="blog-image" />
     </div>
     <h2>Guillermo del Toro's Frankenstein: A Masterpiece of Moral Complexity</h2>
     <p><em>Published on November 18, 2025</em></p>

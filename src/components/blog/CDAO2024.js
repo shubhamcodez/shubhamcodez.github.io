@@ -4,11 +4,11 @@ const CDAO2024 = {
   date: "2024-08-12",
   description: "Reflecting on attending CDAO 2024 and engaging with data and analytics leaders to discuss AI strategies and quantitative research applications.",
   content: `
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div class="blog-image-container">
       <img 
         src="/events/cdao 2024.jpg" 
         alt="Shubham Singh NYU at CDAO 2024 conference" 
-        style="max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
+        class="blog-image"
       />
     </div>
 

@@ -117,7 +117,7 @@ const SEO = ({
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": `${baseUrl}/#/casual?search={search_term_string}`
+        "urlTemplate": `${baseUrl}/#/blog?search={search_term_string}`
       },
       "query-input": "required name=search_term_string"
     }
@@ -211,12 +211,12 @@ const SEO = ({
           "name": "Research",
           "item": `${baseUrl}/#/research`
         });
-      } else if (location.pathname === '/casual') {
+      } else if (location.pathname === '/blog') {
         breadcrumbs.push({
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": `${baseUrl}/#/casual`
+          "item": `${baseUrl}/#/blog`
         });
       } else if (location.pathname === '/resume') {
         breadcrumbs.push({

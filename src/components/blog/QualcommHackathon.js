@@ -4,11 +4,11 @@ const QualcommHackathon = {
   date: "2024-07-20",
   description: "Developing AutoDoc at the Qualcomm LM Studio Hackathon—a tool that automatically creates documentation and tests for code, with an interface to interact and find code snippets.",
   content: `
-    <div style="text-align: center; margin-bottom: 30px;">
+    <div class="blog-image-container">
       <img 
         src="/events/qualcomm lmstudio hackathon.jpg" 
         alt="Shubham Singh NYU at Qualcomm LM Studio Hackathon" 
-        style="max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
+        class="blog-image"
       />
     </div>
 

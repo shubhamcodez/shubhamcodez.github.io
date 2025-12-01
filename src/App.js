@@ -1,5 +1,4 @@
 import './App.css';
-import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Quant from './components/Quant';
 import Resume from './components/Resume';
@@ -78,11 +77,11 @@ function AppContent() {
           image: `${baseUrl}/img_nvidia.png`,
           type: "website"
         };
-      case '/casual':
+      case '/blog':
         return {
-          title: "Casual Inference | Shubham Singh",
-          description: "Casual Inference - Personal blog and articles by Shubham Singh on quantitative finance, machine learning, and technology.",
-          keywords: "Shubham Singh, Shubham Singh, Casual Inference, quantitative finance blog, machine learning blog, quant research blog",
+          title: "Blog | Shubham Singh",
+          description: "Blog - Personal blog and articles by Shubham Singh on quantitative finance, machine learning, and technology.",
+          keywords: "Shubham Singh, Shubham Singh NYU, blog, quantitative finance blog, machine learning blog, quant research blog",
           image: `${baseUrl}/img_nvidia.png`,
           type: "website"
         };
@@ -113,7 +112,7 @@ function AppContent() {
       <DarkModeToggle />
       <div>
         <div className="container">
-          {location.pathname !== '/casual' && location.pathname !== '/research' && (
+          {location.pathname !== '/blog' && location.pathname !== '/research' && (
             <header className="text-center my-4">
               <h1>Shubham Singh</h1>
             </header>
@@ -123,7 +122,7 @@ function AppContent() {
             <nav className="container-fluid">
               <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/casual">Blog</Link></li>
+                <li><Link to="/blog">Blog</Link></li>
               </ul>
             </nav>
           )}
@@ -172,7 +171,7 @@ function AppContent() {
           <Route path="/quant/puzzles" element={<Puzzles />} />
           <Route path="/research" element={<Research />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/casual" element={<Casual />} />
+          <Route path="/blog" element={<Casual />} />
           <Route path="/team" element={<Team />} />
         </Routes>
 
@@ -208,75 +207,6 @@ function AppContent() {
 }
 
 function App() {
-  // Handle GitHub Pages routing - fix redirect loops
-  useEffect(() => {
-    const pathname = window.location.pathname;
-    const search = window.location.search;
-    const hash = window.location.hash;
-    
-    // If URL is already clean (no /?/ redirect format), do nothing
-    if (!search.includes('/?/') && !search.includes('~and~')) {
-      return;
-    }
-    
-    // Use sessionStorage to prevent multiple redirects in the same session
-    const redirectKey = 'github-pages-redirect-processed';
-    const redirectTimestamp = sessionStorage.getItem(redirectKey);
-    const now = Date.now();
-    
-    // If we processed a redirect recently (within last 2 seconds), skip to prevent loops
-    if (redirectTimestamp && (now - parseInt(redirectTimestamp)) < 2000) {
-      return;
-    }
-    
-    // Mark current time
-    sessionStorage.setItem(redirectKey, now.toString());
-    
-    // Detect malformed URLs with excessive ~and~ sequences (infinite loop indicator)
-    if (search.includes('~and~') && (search.match(/~and~/g) || []).length > 5) {
-      // Clean up malformed URL immediately
-      const cleanPath = pathname.includes('casual') ? '/casual' : (pathname || '/');
-      window.location.replace(cleanPath + hash);
-      return;
-    }
-    
-    // Handle GitHub Pages redirect format: /?/path
-    if (search.includes('/?/')) {
-      try {
-        const queryPart = search.split('/?/')[1];
-        if (queryPart) {
-          // Extract path before any query parameters
-          let path = queryPart.split('&')[0];
-          
-          // Remove any ~and~ sequences (these shouldn't be in the path)
-          path = path.replace(/~and~/g, '');
-          
-          // Ensure path starts with /
-          if (path && !path.startsWith('/')) {
-            path = '/' + path;
-          }
-          
-          // Validate path - must be clean and reasonable length
-          if (path && path !== '/' && path.length < 100 && !path.includes('~and~')) {
-            // Build clean URL
-            const basePath = pathname === '/' ? '' : pathname.split('/').slice(0, 2).join('/');
-            const newUrl = basePath + path + hash;
-            
-            // Use replace to navigate (prevents back button issues)
-            window.location.replace(newUrl);
-          } else {
-            // Invalid path - clean up URL
-            window.location.replace(pathname + hash);
-          }
-        }
-      } catch (error) {
-        console.error('Error handling GitHub Pages redirect:', error);
-        // Clean up on error
-        window.location.replace(pathname + hash);
-      }
-    }
-  }, []); // Run only once on mount
-
   return (
     <Router>
       <AppContent />
