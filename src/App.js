@@ -207,59 +207,58 @@ function AppContent() {
   );
 }
 
-// Flag to prevent multiple redirects
-let redirectProcessed = false;
-
 function App() {
   // Handle GitHub Pages routing - only run once on mount
   useEffect(() => {
-    // Prevent multiple redirects
-    if (redirectProcessed) {
-      return;
-    }
-    
     const pathname = window.location.pathname;
     const search = window.location.search;
     const hash = window.location.hash;
     
     // Check if we're on GitHub Pages with the redirect format /?/path
-    // This happens when 404.html redirects /casual to /?/casual
-    if (search.includes('/?/')) {
-      redirectProcessed = true; // Mark as processed immediately to prevent loops
-      
+    // Also check for malformed URLs with multiple ~and~ sequences
+    if (search.includes('/?/') || search.includes('~and~')) {
       try {
-        // Extract the path from the query string format: /?/casual&other=params
-        const queryPart = search.split('/?/')[1];
-        if (queryPart) {
-          // Split by & to get the path part (before any query params)
-          // The path might contain ~and~ which should be converted back to &
-          const pathParts = queryPart.split('&');
-          let path = pathParts[0];
-          
-          // Replace ~and~ back to & in the path
-          path = path.replace(/~and~/g, '&');
-          
-          // Clean up any malformed paths (remove multiple ~and~ sequences)
-          path = path.replace(/~and~+/g, '');
-          
-          // Ensure path starts with /
-          if (path && !path.startsWith('/')) {
-            path = '/' + path;
+        // If URL is malformed with multiple ~and~, clean it up immediately
+        if (search.includes('~and~') && search.split('~and~').length > 10) {
+          // Malformed URL detected - clean it up
+          const cleanPath = pathname === '/' ? '/casual' : pathname;
+          window.history.replaceState({}, '', cleanPath + hash);
+          return;
+        }
+        
+        // Extract the path from the query string format: /?/casual
+        if (search.includes('/?/')) {
+          const queryPart = search.split('/?/')[1];
+          if (queryPart) {
+            // Get the path part before any & or ~and~
+            let path = queryPart.split('&')[0].split('~and~')[0];
+            
+            // Replace any remaining ~and~ back to /
+            path = path.replace(/~and~/g, '/');
+            
+            // Clean up any malformed sequences
+            path = path.replace(/~and~+/g, '');
+            
+            // Ensure path starts with /
+            if (path && !path.startsWith('/')) {
+              path = '/' + path;
+            }
+            
+            // Only redirect if we have a valid, clean path
+            if (path && path !== '/' && !path.includes('~and~') && path.length < 100) {
+              // Use replaceState to update URL without reload
+              const newUrl = pathname.split('/').slice(0, 2).join('/') + path + hash;
+              window.history.replaceState({}, '', newUrl);
+              // Force a page reload to ensure clean state
+              window.location.reload();
+            } else {
+              // If path is invalid, clean up the URL
+              window.history.replaceState({}, '', pathname + hash);
+            }
           }
-          
-          // Only redirect if we have a valid, non-empty path
-          if (path && path !== '/' && path !== pathname && !path.includes('~and~')) {
-            // Use replaceState to update URL without reload
-            // This allows React Router to handle the route change
-            const basePath = pathname.split('/').slice(0, 2).join('/');
-            const newUrl = basePath + path + hash;
-            window.history.replaceState({}, '', newUrl);
-            // Trigger a popstate event so React Router picks up the change
-            window.dispatchEvent(new PopStateEvent('popstate', { state: {} }));
-          } else {
-            // If path is invalid, clean up the URL
-            window.history.replaceState({}, '', pathname + hash);
-          }
+        } else {
+          // Just clean up the malformed search params
+          window.history.replaceState({}, '', pathname + hash);
         }
       } catch (error) {
         console.error('Error handling GitHub Pages redirect:', error);
