@@ -12,10 +12,14 @@ import RAGApplications from './blog/RAGApplications';
 import PeFTMethods from './blog/PeFTMethods';
 import MCPDevelopment from './blog/MCPDevelopment';
 import FrankensteinReview from './blog/FrankensteinReview';
+import AnimalFarmBlog from './blog/animal farm';
+import Pixel4WatchReview from './blog/pixel4watch';
 
 // Blog posts data imported from individual files
 const allBlogPosts = [
+  Pixel4WatchReview,
   FrankensteinReview,
+  AnimalFarmBlog,
   CreditRisk,
   TimeSeriesAnalysis,
   PortfolioOptimization,
@@ -62,9 +66,11 @@ const Casual = () => {
       10: RAGApplications,
       11: PeFTMethods,
       12: MCPDevelopment,
-      13: FrankensteinReview
+      13: FrankensteinReview,
+      14: Pixel4WatchReview,
+      15: AnimalFarmBlog
     };
-    
+
     const blogPost = blogMap[blog.id];
     return blogPost ? blogPost.content : `
       <h2>${blog.title}</h2>
@@ -82,10 +88,10 @@ const Casual = () => {
   useEffect(() => {
     if (selectedBlog) {
       const baseUrl = "https://shubhamcodez.github.io";
-      
+
       // Update document title
       document.title = `${selectedBlog.title} | Casual Inference | Shubham Singh NYU`;
-      
+
       // Helper function to update or create meta tag
       const updateMetaTag = (name, content, attribute = 'name') => {
         let element = document.querySelector(`meta[${attribute}="${name}"]`);
@@ -99,24 +105,24 @@ const Casual = () => {
 
       // Update meta description
       updateMetaTag('description', `${selectedBlog.description} - Blog post by Shubham Singh NYU on Casual Inference.`);
-      
+
       // Update keywords with blog-specific terms
       const keywords = `Shubham Singh, Shubham Singh NYU, ${selectedBlog.title}, Casual Inference, blog, ${selectedBlog.description.split(' ').slice(0, 5).join(', ')}, quantitative finance, machine learning`;
       updateMetaTag('keywords', keywords);
-      
+
       // Update Open Graph tags
       updateMetaTag('og:title', `${selectedBlog.title} | Casual Inference | Shubham Singh NYU`, 'property');
       updateMetaTag('og:description', selectedBlog.description, 'property');
       updateMetaTag('og:type', 'article', 'property');
       updateMetaTag('og:url', `${baseUrl}/#/casual`, 'property');
       updateMetaTag('og:image', `${baseUrl}/img_nvidia.png`, 'property');
-      
+
       // Update Twitter Card tags
       updateMetaTag('twitter:title', `${selectedBlog.title} | Shubham Singh NYU`);
       updateMetaTag('twitter:description', selectedBlog.description);
       updateMetaTag('twitter:card', 'summary_large_image');
       updateMetaTag('twitter:image', `${baseUrl}/img_nvidia.png`);
-      
+
       // Update canonical URL
       let canonicalLink = document.querySelector('link[rel="canonical"]');
       if (!canonicalLink) {
@@ -125,14 +131,14 @@ const Casual = () => {
         document.head.appendChild(canonicalLink);
       }
       canonicalLink.setAttribute('href', `${baseUrl}/#/casual`);
-      
+
       // Add article meta tags
       updateMetaTag('article:published_time', selectedBlog.date, 'property');
       updateMetaTag('article:author', 'Shubham Singh NYU', 'property');
       updateMetaTag('article:section', 'Blog', 'property');
       updateMetaTag('article:tag', 'Quantitative Finance', 'property');
       updateMetaTag('article:tag', 'Machine Learning', 'property');
-      
+
       // Enhanced Article schema
       const articleSchema = {
         "@context": "https://schema.org",
@@ -210,7 +216,7 @@ const Casual = () => {
           <ul className="blog-post-list">
             {blogPosts.map(blog => (
               <li key={blog.id} className={selectedBlog?.id === blog.id ? 'active' : ''}>
-                <button 
+                <button
                   onClick={() => handleBlogClick(blog)}
                   className="blog-post-link"
                 >
