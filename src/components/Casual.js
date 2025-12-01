@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import AdSense from './AdSense';
 import JourneyIntoQuantFinance from './blog/JourneyIntoQuantFinance';
 import MLInTrading from './blog/MLInTrading';
 import FutureOfAlgoTrading from './blog/FutureOfAlgoTrading';
@@ -14,6 +15,13 @@ import MCPDevelopment from './blog/MCPDevelopment';
 import FrankensteinReview from './blog/FrankensteinReview';
 import AnimalFarmBlog from './blog/animal farm';
 import Pixel4WatchReview from './blog/pixel4watch';
+import CornellCompetition from './blog/CornellCompetition';
+import CubistHackathon from './blog/CubistHackathon';
+import GHC2024 from './blog/GHC2024';
+import QualcommHackathon from './blog/QualcommHackathon';
+import AICAF2024 from './blog/AICAF2024';
+import CDAO2024 from './blog/CDAO2024';
+import BattleOfQuants2024 from './blog/BattleOfQuants2024';
 
 // Blog posts data imported from individual files
 const allBlogPosts = [
@@ -31,7 +39,14 @@ const allBlogPosts = [
   JourneyIntoQuantFinance,
   MLInTrading,
   FutureOfAlgoTrading,
-  RiskManagement
+  RiskManagement,
+  CornellCompetition,
+  CubistHackathon,
+  GHC2024,
+  QualcommHackathon,
+  AICAF2024,
+  CDAO2024,
+  BattleOfQuants2024
 ].map(post => ({
   id: post.id,
   title: post.title,
@@ -68,7 +83,14 @@ const Casual = () => {
       12: MCPDevelopment,
       13: FrankensteinReview,
       14: Pixel4WatchReview,
-      15: AnimalFarmBlog
+      15: AnimalFarmBlog,
+      16: CornellCompetition,
+      17: CubistHackathon,
+      18: GHC2024,
+      19: QualcommHackathon,
+      20: AICAF2024,
+      21: CDAO2024,
+      22: BattleOfQuants2024
     };
 
     const blogPost = blogMap[blog.id];
@@ -206,26 +228,54 @@ const Casual = () => {
         <h1 className="title">Casual Inference</h1>
       </header>
 
-      <section id="about" className="my-4">
-        <p>Welcome to Casual Inference, the personal blog of Shubham Singh NYU. Here I share insights on quantitative finance, machine learning, AI, and technology. Feel free to explore!</p>
-      </section>
-
       <div className="blog-layout">
         <aside className="blog-sidebar">
+          {/* Ad unit at the top */}
+          <div className="ad-container ad-top">
+            <AdSense 
+              adSlot="1234567890" 
+              adFormat="auto"
+              style={{ minHeight: '250px' }}
+            />
+          </div>
+
           <h3>Blog Posts</h3>
           <ul className="blog-post-list">
-            {blogPosts.map(blog => (
-              <li key={blog.id} className={selectedBlog?.id === blog.id ? 'active' : ''}>
-                <button
-                  onClick={() => handleBlogClick(blog)}
-                  className="blog-post-link"
-                >
-                  <span className="blog-post-title">{blog.title}</span>
-                  <span className="blog-post-date">{blog.date}</span>
-                </button>
-              </li>
+            {blogPosts.map((blog, index) => (
+              <React.Fragment key={blog.id}>
+                <li className={selectedBlog?.id === blog.id ? 'active' : ''}>
+                  <button
+                    onClick={() => handleBlogClick(blog)}
+                    className="blog-post-link"
+                  >
+                    <span className="blog-post-title">{blog.title}</span>
+                    <span className="blog-post-date">{blog.date}</span>
+                  </button>
+                </li>
+                {/* Ad unit after every 5th post */}
+                {index > 0 && (index + 1) % 5 === 0 && (
+                  <li className="ad-item">
+                    <div className="ad-container">
+                      <AdSense 
+                        adSlot="1234567890" 
+                        adFormat="auto"
+                        style={{ minHeight: '250px' }}
+                      />
+                    </div>
+                  </li>
+                )}
+              </React.Fragment>
             ))}
           </ul>
+
+          {/* Ad unit at the bottom */}
+          <div className="ad-container ad-bottom">
+            <AdSense 
+              adSlot="1234567890" 
+              adFormat="auto"
+              style={{ minHeight: '250px' }}
+            />
+          </div>
         </aside>
         <main className="blog-content">
           {blogContent && selectedBlog ? (

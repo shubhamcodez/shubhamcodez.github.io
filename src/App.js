@@ -23,7 +23,7 @@ function AppContent() {
     switch (path) {
       case '/':
         return {
-          title: "Shubham Singh | Shubham Singh NYU | Quantitative Finance Researcher & Machine Learning Expert",
+          title: "Shubham Singh | Quantitative Finance Researcher & Machine Learning Expert",
           description: "Shubham Singh - NYU graduate and Quantitative Researcher. Shubham Singh from DAV Kharghar and Bharati Vidyapeeth University. Expert in machine learning, algorithmic trading, and quantitative finance. Research leader in quantitative finance, LLM finetuning, quantum semantic embeddings, and market making strategies. Founder of Exituity.",
           keywords: "Shubham Singh, Shubham Singh NYU, Shubham Singh DAV Kharghar, Shubham Singh Bharati Vidyapeeth, Shubham Singh Kharghar, quantitative researcher, machine learning expert, algorithmic trading, statistical modeling, quantitative finance, LLM finetuning, quantum semantic embedding, market making, arbitrage strategies, optimal control, NYU graduate, Bharati Vidyapeeth graduate, published researcher, Exituity founder",
           image: `${baseUrl}/img_nvidia.png`,
@@ -31,15 +31,15 @@ function AppContent() {
         };
       case '/quant':
         return {
-          title: "Quantitative Finance Resources | Shubham Singh NYU",
-          description: "Comprehensive quantitative finance resources by Shubham Singh NYU including coding challenges, puzzles, and educational materials for aspiring quantitative researchers and traders.",
+          title: "Quantitative Finance Resources | Shubham Singh",
+          description: "Comprehensive quantitative finance resources by Shubham Singh including coding challenges, puzzles, and educational materials for aspiring quantitative researchers and traders.",
           keywords: "Shubham Singh, Shubham Singh NYU, quantitative finance resources, quant coding challenges, trading puzzles, quantitative finance education, algorithmic trading resources",
           image: `${baseUrl}/img_nvidia.png`,
           type: "website"
         };
       case '/quant/coding':
         return {
-          title: "Quantitative Finance Coding Challenges | Shubham Singh NYU",
+          title: "Quantitative Finance Coding Challenges | Shubham Singh",
           description: "Practice coding challenges and problems by Shubham Singh for quantitative finance interviews and algorithmic trading positions.",
           keywords: "Shubham Singh, Shubham Singh NYU, quant coding challenges, quantitative finance coding, algorithmic trading coding, quant interview preparation, finance programming",
           image: `${baseUrl}/img_nvidia.png`,
@@ -47,7 +47,7 @@ function AppContent() {
         };
       case '/quant/resources':
         return {
-          title: "Quantitative Finance Learning Resources | Shubham Singh NYU",
+          title: "Quantitative Finance Learning Resources | Shubham Singh",
           description: "Curated list by Shubham Singh NYU of books, papers, courses, and resources for learning quantitative finance, machine learning, and algorithmic trading.",
           keywords: "Shubham Singh, Shubham Singh NYU, quantitative finance books, quant learning resources, finance courses, trading education, quantitative finance papers",
           image: `${baseUrl}/img_nvidia.png`,
@@ -55,7 +55,7 @@ function AppContent() {
         };
       case '/quant/puzzles':
         return {
-          title: "Quantitative Finance Puzzles | Shubham Singh NYU",
+          title: "Quantitative Finance Puzzles | Shubham Singh",
           description: "Brain teasers and puzzles by Shubham Singh for quantitative finance interviews and trading positions. Test your problem-solving skills.",
           keywords: "Shubham Singh, Shubham Singh NYU, quant puzzles, finance brain teasers, quantitative interview puzzles, trading puzzles, quant problem solving",
           image: `${baseUrl}/img_nvidia.png`,
@@ -63,7 +63,7 @@ function AppContent() {
         };
       case '/resume':
         return {
-          title: "Resume | Shubham Singh NYU - Quantitative Researcher",
+          title: "Resume | Shubham Singh - Quantitative Researcher",
           description: "Professional resume and CV of Shubham Singh NYU - Quantitative Researcher specializing in machine learning, algorithmic trading, and statistical modeling.",
           keywords: "Shubham Singh, Shubham Singh NYU, Shubham Singh resume, quantitative researcher CV, quant researcher resume, machine learning engineer resume",
           image: `${baseUrl}/img_nvidia.png`,
@@ -71,7 +71,7 @@ function AppContent() {
         };
       case '/research':
         return {
-          title: "Research | Shubham Singh NYU - Quantitative Finance & Machine Learning",
+          title: "Research | Shubham Singh - Quantitative Finance & Machine Learning",
           description: "Research publications, working papers, and preprints by Shubham Singh NYU on quantitative finance, machine learning, LLM alignment, and algorithmic trading.",
           keywords: "Shubham Singh, Shubham Singh NYU, quantitative finance research, machine learning research, LLM alignment, algorithmic trading research, research papers, arXiv preprints",
           image: `${baseUrl}/img_nvidia.png`,
@@ -79,9 +79,9 @@ function AppContent() {
         };
       case '/casual':
         return {
-          title: "Casual Inference | Shubham Singh NYU",
-          description: "Casual Inference - Personal blog and articles by Shubham Singh NYU on quantitative finance, machine learning, and technology.",
-          keywords: "Shubham Singh, Shubham Singh NYU, Casual Inference, quantitative finance blog, machine learning blog, quant research blog",
+          title: "Casual Inference | Shubham Singh",
+          description: "Casual Inference - Personal blog and articles by Shubham Singh on quantitative finance, machine learning, and technology.",
+          keywords: "Shubham Singh, Shubham Singh, Casual Inference, quantitative finance blog, machine learning blog, quant research blog",
           image: `${baseUrl}/img_nvidia.png`,
           type: "website"
         };
@@ -163,56 +163,6 @@ function AppContent() {
               </div>
 
               <Research hideTitle={true} />
-
-              <div className="events-box mt-4">
-                <h3>Events & Competitions</h3>
-                <div className="events-content">
-                  <div className="events-grid">
-                    <div className="event-item">
-                      <img src="/events/cornell competition.jpg" alt="Shubham Singh NYU at Cornell Competition - Top 5 placement" title="Shubham Singh, Shubham Singh NYU at Cornell Competition - Top 5 in market making, estimatathon, trading, and prediction markets" className="event-image" />
-                      <div className="event-overlay">
-                        <div className="event-description">Placed top 5 in all games played at the Cornell Competition, including market making, estimatathon, trading, and prediction markets.</div>
-                      </div>
-                    </div>
-                    <div className="event-item">
-                      <img src="/events/cubist hackathon.jpg" alt="Shubham Singh NYU at Cubist Hackathon 2024" title="Shubham Singh, Shubham Singh NYU at Cubist Hackathon 2024 - Graph algorithms for NYC subway optimization" className="event-image" />
-                      <div className="event-overlay">
-                        <div className="event-description">Built an application for tourists visiting NYC that uses graph algorithms to optimize for costs and time by leveraging subway timing, optimal paths, and time of day at the Cubist Hackathon 2024.</div>
-                      </div>
-                    </div>
-                    <div className="event-item">
-                      <img src="/events/ghc24.jpg" alt="Shubham Singh NYU representing NYU Tandon at GHC 2024" title="Shubham Singh, Shubham Singh NYU representing NYU Tandon at Grace Hopper Celebration GHC 2024" className="event-image" />
-                      <div className="event-overlay">
-                        <div className="event-description">Represented NYU Tandon at GHC 2024, helping advance GHC's mission of empowering women in technology. Engaged with students and encouraged them to join NYU as their representative.</div>
-                      </div>
-                    </div>
-                    <div className="event-item">
-                      <img src="/events/qualcomm lmstudio hackathon.jpg" alt="Shubham Singh NYU at Qualcomm LM Studio Hackathon" title="Shubham Singh, Shubham Singh NYU at Qualcomm LM Studio Hackathon - AutoDoc tool development" className="event-image" />
-                      <div className="event-overlay">
-                        <div className="event-description">Built AutoDoc, a tool designed to automatically create documentation and tests for code, and provide an interface to interact and find code snippets across the entire database at the Qualcomm LM Studio Hackathon.</div>
-                      </div>
-                    </div>
-                    <div className="event-item">
-                      <img src="/events/aicaf24.jpg" alt="Shubham Singh NYU moderating panel at AICAF 2024" title="Shubham Singh, Shubham Singh NYU moderating Reinforcement Learning in Finance panel at AICAF 2024" className="event-image" />
-                      <div className="event-overlay">
-                        <div className="event-description">Moderated the panel on Reinforcement Learning in Finance at AICAF'24. Volunteered for other parts of the conference.</div>
-                      </div>
-                    </div>
-                    <div className="event-item">
-                      <img src="/events/cdao 2024.jpg" alt="Shubham Singh NYU at CDAO 2024 conference" title="Shubham Singh, Shubham Singh NYU at CDAO 2024 - Chief Data and Analytics Officer conference" className="event-image" />
-                      <div className="event-overlay">
-                        <div className="event-description">Attended CDAO 2024, engaging with data and analytics leaders to discuss AI strategies and quantitative research applications.</div>
-                      </div>
-                    </div>
-                    <div className="event-item">
-                      <img src="/events/battle of quant 2024.jpg" alt="Shubham Singh NYU at Battle of Quants 2024" title="Shubham Singh, Shubham Singh NYU at Battle of Quants 2024 - Quantitative finance competition" className="event-image" />
-                      <div className="event-overlay">
-                        <div className="event-description">Participated in Battle of Quants 2024, engaging in discussions with top quant researchers and industry professionals, and debating key topics in quantitative finance.</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           } />
           <Route path="/quant" element={<Quant />} />

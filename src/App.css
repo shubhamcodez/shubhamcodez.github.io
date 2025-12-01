@@ -964,6 +964,47 @@ nav ul li a.active {
   margin-bottom: 10px;
 }
 
+/* AdSense Ad Container Styles */
+.ad-container {
+  margin: 20px 0;
+  text-align: center;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-sectionning-background-color);
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid var(--muted-border-color);
+}
+
+.ad-top {
+  margin-bottom: 20px;
+}
+
+.ad-bottom {
+  margin-top: 20px;
+}
+
+.ad-item {
+  margin: 20px 0;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  list-style: none;
+}
+
+.ad-item .ad-container {
+  margin: 20px 0;
+}
+
+/* Responsive ad styling */
+@media (max-width: 768px) {
+  .ad-container {
+    min-height: 200px;
+    padding: 8px;
+  }
+}
+
 .blog-post-content em {
   color: var(--muted-color);
   font-size: 0.9em;
