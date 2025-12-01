@@ -1,23 +1,26 @@
 const LucidEquityResearch = {
   id: 23,
-  title: "Equity Research Report – Lucid Group, Inc. (LCID)",
+  title: "What I am holding: Lucid Group, Inc. (LCID)",
   date: "2025-11-30",
   description: "A comprehensive equity research analysis of Lucid Group, Inc. (LCID), evaluating the luxury EV manufacturer's technology, financials, competitive position, and valuation.",
   content: `
     <div class="blog-image-container">
       <img 
-        src="/blog images/lucid.png" 
-        alt="Lucid Group, Inc. (LCID) - Equity Research Report" 
+        src="/blog images/lucid.jpg" 
+        alt="Lucid Group, Inc. (LCID)" 
         class="blog-image"
       />
     </div>
     <h2>Equity Research Report – Lucid Group, Inc. (LCID)</h2>
     <p><em>Electric Vehicles | United States | November 2025</em></p>
-    <p><strong>Analyst:</strong> —</p>
     <p><strong>Rating:</strong> Neutral / Hold</p>
     <p><strong>Fair Value Estimate:</strong> $11–12 per share</p>
     <p><strong>Current Price:</strong> ~$13.6</p>
     <p><strong>Margin of Safety Required:</strong> 20–30%</p>
+
+    <div style="background-color: #fff3cd; border: 2px solid #ffc107; border-radius: 5px; padding: 15px; margin: 20px 0;">
+      <p style="margin: 0; font-weight: bold; color: #856404;"><strong>⚠️ Disclaimer:</strong> This analysis is for informational and educational purposes only. This is not financial advice, investment advice, or a recommendation to buy, sell, or hold any security. All investments carry risk of loss. Please conduct your own research and consult with a qualified financial advisor before making any investment decisions.</p>
+    </div>
 
     <h3>1. Executive Summary</h3>
     <p>Lucid Motors stands as one of the most technologically ambitious luxury EV manufacturers in the market today. The company has repeatedly demonstrated excellence in powertrain engineering, battery first-principles innovation, aerodynamics, and high-performance software systems. However, despite its engineering edge, Lucid remains fundamentally challenged by scale, unit economics, and persistent cash burn.</p>

@@ -139,7 +139,7 @@ const Casual = () => {
       updateMetaTag('og:title', `${selectedBlog.title} | Casual Inference | Shubham Singh NYU`, 'property');
       updateMetaTag('og:description', selectedBlog.description, 'property');
       updateMetaTag('og:type', 'article', 'property');
-      updateMetaTag('og:url', `${baseUrl}/#/blog`, 'property');
+      updateMetaTag('og:url', `${baseUrl}/blog`, 'property');
       updateMetaTag('og:image', `${baseUrl}/img_nvidia.png`, 'property');
 
       // Update Twitter Card tags
@@ -155,7 +155,7 @@ const Casual = () => {
         canonicalLink.setAttribute('rel', 'canonical');
         document.head.appendChild(canonicalLink);
       }
-      canonicalLink.setAttribute('href', `${baseUrl}/#/blog`);
+      canonicalLink.setAttribute('href', `${baseUrl}/blog`);
 
       // Add article meta tags
       updateMetaTag('article:published_time', selectedBlog.date, 'property');
@@ -195,9 +195,9 @@ const Casual = () => {
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": `${baseUrl}/#/blog`
+          "@id": `${baseUrl}/blog`
         },
-        "url": `${baseUrl}/#/blog`,
+        "url": `${baseUrl}/blog`,
         "image": `${baseUrl}/img_nvidia.png`,
         "keywords": keywords
       };

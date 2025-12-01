@@ -117,7 +117,7 @@ const SEO = ({
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": `${baseUrl}/#/blog?search={search_term_string}`
+        "urlTemplate": `${baseUrl}/blog?search={search_term_string}`
       },
       "query-input": "required name=search_term_string"
     }
@@ -183,14 +183,14 @@ const SEO = ({
           "@type": "ListItem",
           "position": 2,
           "name": "Quantitative Finance Resources",
-          "item": `${baseUrl}/#/quant`
+          "item": `${baseUrl}/quant`
         });
       } else if (location.pathname.startsWith('/quant/')) {
         breadcrumbs.push({
           "@type": "ListItem",
           "position": 2,
           "name": "Quantitative Finance Resources",
-          "item": `${baseUrl}/#/quant`
+          "item": `${baseUrl}/quant`
         });
         const pageName = location.pathname.split('/').pop();
         const pageNames = {
@@ -202,28 +202,28 @@ const SEO = ({
           "@type": "ListItem",
           "position": 3,
           "name": pageNames[pageName] || pageName,
-          "item": `${baseUrl}/#${location.pathname}`
+          "item": `${baseUrl}${location.pathname}`
         });
       } else if (location.pathname === '/research') {
         breadcrumbs.push({
           "@type": "ListItem",
           "position": 2,
           "name": "Research",
-          "item": `${baseUrl}/#/research`
+          "item": `${baseUrl}/research`
         });
       } else if (location.pathname === '/blog') {
         breadcrumbs.push({
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": `${baseUrl}/#/blog`
+          "item": `${baseUrl}/blog`
         });
       } else if (location.pathname === '/resume') {
         breadcrumbs.push({
           "@type": "ListItem",
           "position": 2,
           "name": "Resume",
-          "item": `${baseUrl}/#/resume`
+          "item": `${baseUrl}/resume`
         });
       }
 
