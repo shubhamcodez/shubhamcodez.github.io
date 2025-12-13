@@ -213,6 +213,12 @@ function AppContent() {
             <a href="https://www.youtube.com/ShubhamSinghYoutube" target="_blank" rel="noopener noreferrer" className="social-link">
               <i className="fab fa-youtube"></i>
             </a>
+            <a href="https://x.com/peakshubham" target="_blank" rel="noopener noreferrer" className="social-link">
+              <i className="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://scholar.google.com/citations?user=YTCnYh4AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="social-link">
+              <i className="fas fa-graduation-cap"></i>
+            </a>
           </div>
         </footer>
       </div>

@@ -403,6 +403,12 @@ nav ul li a.active {
   padding: 1.5rem;
 }
 
+/* Ensure dropdown menu has solid background in light mode */
+html:not([data-theme="dark"]) .companies-dropdown-menu {
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 .dropdown-content {
   display: flex;
   gap: 2rem;
@@ -1387,4 +1393,31 @@ nav ul li a.active {
   .paper-header-content h1 {
     font-size: 1.5rem;
   }
+}
+
+/* Research paper logo color filters */
+/* Light mode: black logos */
+.aqi-paper-image,
+.syseng-paper-image,
+.kanfac-paper-image,
+.factorsbtc-paper-image,
+.transformeteth-paper-image,
+.brainvoxgen-paper-image,
+.brain-paper-image,
+.geo-paper-image,
+.paper-detail-image {
+  filter: brightness(0);
+}
+
+/* Dark mode: white logos */
+[data-theme="dark"] .aqi-paper-image,
+[data-theme="dark"] .syseng-paper-image,
+[data-theme="dark"] .kanfac-paper-image,
+[data-theme="dark"] .factorsbtc-paper-image,
+[data-theme="dark"] .transformeteth-paper-image,
+[data-theme="dark"] .brainvoxgen-paper-image,
+[data-theme="dark"] .brain-paper-image,
+[data-theme="dark"] .geo-paper-image,
+[data-theme="dark"] .paper-detail-image {
+  filter: brightness(0) invert(1);
 }

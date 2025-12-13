@@ -9,6 +9,7 @@ const FrankensteinReview = {
     </div>
     <h2>Guillermo del Toro's Frankenstein: A Masterpiece of Moral Complexity</h2>
     <p><em>Published on November 18, 2025</em></p>
+    <p><strong>My Rating:</strong> ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️ <strong>10/10</strong></p>
     <p>A review of Guillermo del Toro's stunning adaptation, exploring the moral grayness of creator and creation.</p>
     
     <h3>A Cinematic Triumph</h3>

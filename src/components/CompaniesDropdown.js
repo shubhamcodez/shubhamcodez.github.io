@@ -23,23 +23,19 @@ const CompaniesDropdown = () => {
   const companies = [
     {
       name: 'Exituity',
-      url: 'https://exituity.com',
-      description: 'AI-Powered Business Navigator'
+      url: 'https://exituity.com'
     },
     {
       name: 'Singh Asset Management',
-      url: 'https://singh-asset-management.vercel.app/',
-      description: 'Quantitative Asset Management'
+      url: 'https://singh-asset-management.vercel.app/'
     },
     {
       name: 'Interstellar Ventures',
-      url: 'https://vercel.com/shubhamcodezs-projects/interstellar-ventures',
-      description: 'Early-Stage Investment Firm'
+      url: 'https://interstellar-ventures.vercel.app/'
     },
     {
       name: 'Qapture',
-      url: 'https://qapture-frontend.vercel.app/',
-      description: 'Frontend Platform'
+      url: 'https://qapture-frontend.vercel.app/'
     }
   ];
 
@@ -73,7 +69,6 @@ const CompaniesDropdown = () => {
                       className="dropdown-link"
                     >
                       <span className="dropdown-link-name">{company.name}</span>
-                      <span className="dropdown-link-desc">{company.description}</span>
                     </a>
                   </li>
                 ))}

@@ -12,6 +12,10 @@ import RAGApplications from './blog/RAGApplications';
 import PeFTMethods from './blog/PeFTMethods';
 import MCPDevelopment from './blog/MCPDevelopment';
 import FrankensteinReview from './blog/FrankensteinReview';
+import RunningManReview from './blog/RunningManReview';
+import OneBattleAfterAnotherReview from './blog/OneBattleAfterAnotherReview';
+import TwentyEightYearsLaterReview from './blog/TwentyEightYearsLaterReview';
+import BoyKillsWorldReview from './blog/BoyKillsWorldReview';
 import AnimalFarmBlog from './blog/animal farm';
 import Pixel4WatchReview from './blog/pixel4watch';
 import CornellCompetition from './blog/CornellCompetition';
@@ -27,6 +31,10 @@ import LucidEquityResearch from './blog/LucidEquityResearch';
 const allBlogPosts = [
   Pixel4WatchReview,
   FrankensteinReview,
+  RunningManReview,
+  OneBattleAfterAnotherReview,
+  TwentyEightYearsLaterReview,
+  BoyKillsWorldReview,
   AnimalFarmBlog,
   CreditRisk,
   TimeSeriesAnalysis,
@@ -93,7 +101,11 @@ const Casual = () => {
       20: AICAF2024,
       21: CDAO2024,
       22: BattleOfQuants2024,
-      23: LucidEquityResearch
+      23: LucidEquityResearch,
+      24: RunningManReview,
+      25: OneBattleAfterAnotherReview,
+      26: TwentyEightYearsLaterReview,
+      27: BoyKillsWorldReview
     };
 
     const blogPost = blogMap[blog.id];
