@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 
 const SEO = ({
   title = "Shubham Singh | Quantitative Finance Researcher & Machine Learning Expert",
-  description = "Shubham Singh - Exceptional Quantitative Researcher with advanced expertise in statistical modeling, machine learning, and algorithmic trading. Research leader in quantitative finance, LLM finetuning, quantum semantic embeddings, and market making strategies.",
-  keywords = "quantitative researcher, machine learning expert, algorithmic trading, statistical modeling, quantitative finance, LLM finetuning, quantum semantic embedding, market making, arbitrage strategies, optimal control, NYU graduate, published researcher, Exituity founder",
+  description = "Shubham Singh - Exceptional Quantitative Researcher with advanced expertise in statistical modeling, machine learning, and algorithmic trading. Research leader in quantitative finance, LLM finetuning, quantum semantic embeddings, and market making strategies. Founder of Exituity, Interstellar Ventures (early-stage investment firm), and Singh Asset Management (quantitative asset management with $50k AUM and exceptional returns).",
+  keywords = "quantitative researcher, machine learning expert, algorithmic trading, statistical modeling, quantitative finance, LLM finetuning, quantum semantic embedding, market making, arbitrage strategies, optimal control, NYU graduate, published researcher, Exituity founder, Interstellar Ventures founder, Singh Asset Management founder, early stage investing, startup advisor, venture capital, angel investing, asset management, investment management, hedge fund, quantitative trading, US markets, India markets, high returns, portfolio management, founder advisor",
   image = "https://shubhamcodez.github.io/img_nvidia.png",
   type = "website",
   author = "Shubham Singh",
@@ -34,11 +34,37 @@ const SEO = ({
     "url": baseUrl,
     "image": `${baseUrl}/img_nvidia.png`,
     "jobTitle": "Quantitative Researcher & Founder",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Exituity",
-      "url": baseUrl
-    },
+    "worksFor": [
+      {
+        "@type": "Organization",
+        "name": "Exituity",
+        "url": baseUrl
+      },
+      {
+        "@type": "Organization",
+        "name": "Interstellar Ventures",
+        "url": baseUrl
+      },
+      {
+        "@type": "Organization",
+        "name": "Singh Asset Management",
+        "url": baseUrl
+      }
+    ],
+    "founderOf": [
+      {
+        "@type": "Organization",
+        "name": "Exituity"
+      },
+      {
+        "@type": "Organization",
+        "name": "Interstellar Ventures"
+      },
+      {
+        "@type": "Organization",
+        "name": "Singh Asset Management"
+      }
+    ],
     "alumniOf": [
       {
         "@type": "CollegeOrUniversity",
@@ -85,7 +111,12 @@ const SEO = ({
       "Statistical Modeling",
       "Algorithmic Trading",
       "Risk Management",
-      "Financial Engineering"
+      "Financial Engineering",
+      "Early Stage Investing",
+      "Venture Capital",
+      "Asset Management",
+      "Portfolio Management",
+      "Startup Advisory"
     ],
     "hasOccupation": {
       "@type": "Occupation",
@@ -123,17 +154,55 @@ const SEO = ({
     }
   };
 
-  const organizationStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Exituity",
-    "founder": {
-      "@type": "Person",
-      "name": "Shubham Singh",
-      "alternateName": "Shubham Singh NYU"
+  const organizationStructuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Exituity",
+      "founder": {
+        "@type": "Person",
+        "name": "Shubham Singh",
+        "alternateName": "Shubham Singh NYU"
+      },
+      "url": baseUrl
     },
-    "url": baseUrl
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Interstellar Ventures",
+      "description": "Interstellar Ventures is an early-stage investment firm that invests $0-5k and advises founders building businesses that go beyond ordinary. Founded by Shubham Singh.",
+      "founder": {
+        "@type": "Person",
+        "name": "Shubham Singh",
+        "alternateName": "Shubham Singh NYU"
+      },
+      "url": baseUrl,
+      "foundingDate": "2024",
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": "1-10"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": `${baseUrl}#organization/singh-asset-management`,
+      "name": "Singh Asset Management",
+      "description": "Singh Asset Management is a quantitative asset management firm with $50k USD AUM, achieving 78% annual returns in US markets and 28% annual returns in India markets in 2025. Founded by Shubham Singh.",
+      "founder": {
+        "@type": "Person",
+        "name": "Shubham Singh",
+        "alternateName": "Shubham Singh NYU"
+      },
+      "url": baseUrl,
+      "foundingDate": "2024",
+      "assetsUnderManagement": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "50000"
+      }
+    }
+  ];
 
   const finalStructuredData = structuredData || defaultStructuredData;
   const robotsContent = `${noindex ? 'noindex' : 'index'}, ${nofollow ? 'nofollow' : 'follow'}`;
@@ -259,10 +328,13 @@ const SEO = ({
         websiteScript.textContent = JSON.stringify(websiteStructuredData);
         document.head.appendChild(websiteScript);
 
-        const orgScript = document.createElement('script');
-        orgScript.setAttribute('type', 'application/ld+json');
-        orgScript.textContent = JSON.stringify(organizationStructuredData);
-        document.head.appendChild(orgScript);
+        // Add Organization schemas for all founded companies
+        organizationStructuredData.forEach(org => {
+          const orgScript = document.createElement('script');
+          orgScript.setAttribute('type', 'application/ld+json');
+          orgScript.textContent = JSON.stringify(org);
+          document.head.appendChild(orgScript);
+        });
 
         // Add FAQ schema for home page
         const faqData = {
@@ -282,7 +354,7 @@ const SEO = ({
               "name": "What does Shubham Singh do?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Shubham Singh is currently an AI Quant Tutor at xAI and the founder of Exituity. He specializes in quantitative finance, machine learning, algorithmic trading, and has published multiple research papers on AI alignment, LLM finetuning, and quantitative finance."
+                "text": "Shubham Singh is currently an AI Quant Tutor at xAI and the founder of Exituity, Interstellar Ventures, and Singh Asset Management. He specializes in quantitative finance, machine learning, algorithmic trading, early-stage investing, and asset management. He has published multiple research papers on AI alignment, LLM finetuning, and quantitative finance."
               }
             },
             {
@@ -291,6 +363,22 @@ const SEO = ({
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Shubham Singh completed his Master's in Computer Engineering at New York University (NYU) and his Bachelor's in Computer Science at Bharati Vidyapeeth University. He also attended DAV Kharghar for high school."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Interstellar Ventures?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Interstellar Ventures is an early-stage investment firm founded by Shubham Singh that invests $0-5k and advises founders building businesses that go beyond ordinary. The firm focuses on supporting innovative startups and providing strategic guidance to exceptional entrepreneurs."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Singh Asset Management?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Singh Asset Management is a quantitative asset management firm founded by Shubham Singh with $50k USD in assets under management. In 2025, the firm achieved impressive annual returns of 78% in US markets and 28% in India markets, demonstrating strong performance across both markets."
               }
             }
           ]

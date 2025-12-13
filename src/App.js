@@ -10,6 +10,8 @@ import Resources from './components/quant/Resources';
 import Puzzles from './components/quant/Puzzles';
 import DarkModeToggle from './components/DarkModeToggle';
 import SEO from './components/SEO';
+import CompaniesDropdown from './components/CompaniesDropdown';
+import PaperDetail from './components/PaperDetail';
 
 function AppContent() {
   const location = useLocation();
@@ -24,8 +26,8 @@ function AppContent() {
       case '/':
         return {
           title: "Shubham Singh | Quantitative Finance Researcher & Machine Learning Expert",
-          description: "Shubham Singh - NYU graduate and Quantitative Researcher. Shubham Singh from DAV Kharghar and Bharati Vidyapeeth University. Expert in machine learning, algorithmic trading, and quantitative finance. Research leader in quantitative finance, LLM finetuning, quantum semantic embeddings, and market making strategies. Founder of Exituity.",
-          keywords: "Shubham Singh, Shubham Singh NYU, Shubham Singh DAV Kharghar, Shubham Singh Bharati Vidyapeeth, Shubham Singh Kharghar, quantitative researcher, machine learning expert, algorithmic trading, statistical modeling, quantitative finance, LLM finetuning, quantum semantic embedding, market making, arbitrage strategies, optimal control, NYU graduate, Bharati Vidyapeeth graduate, published researcher, Exituity founder",
+          description: "Shubham Singh - NYU graduate and Quantitative Researcher. Shubham Singh from DAV Kharghar and Bharati Vidyapeeth University. Expert in machine learning, algorithmic trading, and quantitative finance. Research leader in quantitative finance, LLM finetuning, quantum semantic embeddings, and market making strategies. Founder of Exituity (AI-powered business navigator), Interstellar Ventures (early-stage investment firm investing $0-5k and advising founders), and Singh Asset Management ($50k AUM with 78% returns in US markets and 28% in India markets in 2025).",
+          keywords: "Shubham Singh, Shubham Singh NYU, Shubham Singh DAV Kharghar, Shubham Singh Bharati Vidyapeeth, Shubham Singh Kharghar, quantitative researcher, machine learning expert, algorithmic trading, statistical modeling, quantitative finance, LLM finetuning, quantum semantic embedding, market making, arbitrage strategies, optimal control, NYU graduate, Bharati Vidyapeeth graduate, published researcher, Exituity founder, Interstellar Ventures, Interstellar Ventures founder, Singh Asset Management, Singh Asset Management founder, early stage investing, startup advisor, venture capital, angel investing, asset management firm, investment management, hedge fund, quantitative trading, US markets trading, India markets trading, high returns investment, portfolio management, founder advisor, 78% returns, 50k AUM, startup investment advisor",
           image: `${baseUrl}/img_nvidia.png`,
           type: "profile"
         };
@@ -94,6 +96,16 @@ function AppContent() {
           type: "website"
         };
       default:
+        // Check if it's a research paper page
+        if (path.startsWith('/research/')) {
+          return {
+            title: "Research Paper | Shubham Singh NYU",
+            description: "Research publication by Shubham Singh NYU on quantitative finance, machine learning, and AI.",
+            keywords: "Shubham Singh, Shubham Singh NYU, research paper, quantitative finance, machine learning",
+            image: `${baseUrl}/img_nvidia.png`,
+            type: "article"
+          };
+        }
         return {
           title: "Shubham Singh | Shubham Singh NYU | Quantitative Finance Researcher & Machine Learning Expert",
           description: "Shubham Singh NYU - Exceptional Quantitative Researcher with advanced expertise in statistical modeling, machine learning, and algorithmic trading.",
@@ -123,6 +135,7 @@ function AppContent() {
               <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/blog">Blog</Link></li>
+                <CompaniesDropdown />
               </ul>
             </nav>
           )}
@@ -138,7 +151,7 @@ function AppContent() {
                       I am Shubham Singh, an engineer specializing in machine learning, AI, engineering, and quantitative research. As a NYU graduate and former student at DAV Kharghar and Bharati Vidyapeeth University, my work encompasses building AI solutions, developing trading strategies, and constructing end-to-end systems—from predictive pricing models and algorithmic trading strategies to robust trading systems, risk frameworks, and scalable ML pipelines that transform data ingestion and feature engineering into real-time AI model deployment.
                     </p>
                     <p><strong>Education:</strong> I hold a Master's in Computer Engineering from New York University (NYU) and a Bachelor's in Computer Science from Bharati Vidyapeeth University. I completed my high school education at DAV Kharghar in Kharghar, Navi Mumbai.</p>
-                    <p><strong>Experience:</strong> I'm currently an AI Quant Tutor at xAI, working on AI training and improvement initiatives. I'm also the founder of Exituity, where I'm building an AI-powered business navigator with forecasting, valuation, and real-time insights. I've worked as a Quant Researcher at Blockhouse and GoQuant, directing alpha research and deploying systematic trading strategies. As an AI Researcher at the Artificial Intelligence Institute of South Carolina, I co-authored the Alignment Quality Index paper and fine-tuned LLM models for alignment research. At NYU, I've mentored students as an AI Product Management Mentor and facilitated cross-institution collaborations. Earlier, I interned at QuantFarming building backtesting and optimization frameworks for trading strategies, at Symbiosis Institute of Medical Imaging developing deep learning pipelines for medical image synthesis, and at the United Nations Development Programme deploying ML models for geospatial analysis and NLP pipelines. I've also worked with Dexterity Global Group and Algorithmic Biologics, and was involved with DSC BVUCEOP and the Entrepreneurship Development Cell during my undergraduate years.</p>
+                    <p><strong>Experience:</strong> I'm currently an AI Quant Tutor at xAI, working on AI training and improvement initiatives. I'm also the founder of Exituity, where I'm building an AI-powered business navigator with forecasting, valuation, and real-time insights. I'm the founder of Interstellar Ventures, which invests $0-5k and advises founders building businesses that go beyond ordinary. I'm also the founder of Singh Asset Management, with an AUM of $50k USD and annual returns of 78% in US markets and 28% in India markets in 2025. I've worked as a Quant Researcher at Blockhouse and GoQuant, directing alpha research and deploying systematic trading strategies. As an AI Researcher at the Artificial Intelligence Institute of South Carolina, I co-authored the Alignment Quality Index paper and fine-tuned LLM models for alignment research. At NYU, I've mentored students as an AI Product Management Mentor and facilitated cross-institution collaborations. Earlier, I interned at QuantFarming building backtesting and optimization frameworks for trading strategies, at Symbiosis Institute of Medical Imaging developing deep learning pipelines for medical image synthesis, and at the United Nations Development Programme deploying ML models for geospatial analysis and NLP pipelines. I've also worked with Dexterity Global Group and Algorithmic Biologics, and was involved with DSC BVUCEOP and the Entrepreneurship Development Cell during my undergraduate years.</p>
                     <p>Email: shubham.singh (at) nyu (dot) edu</p>
                   </div>
                 </article>
@@ -170,6 +183,7 @@ function AppContent() {
           <Route path="/quant/resources" element={<Resources />} />
           <Route path="/quant/puzzles" element={<Puzzles />} />
           <Route path="/research" element={<Research />} />
+          <Route path="/research/:paperId" element={<PaperDetail />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/blog" element={<Casual />} />
           <Route path="/team" element={<Team />} />
