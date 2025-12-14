@@ -26,14 +26,6 @@ const CompaniesDropdown = () => {
       url: 'https://exituity.com'
     },
     {
-      name: 'Singh Asset Management',
-      url: 'https://singh-asset-management.vercel.app/'
-    },
-    {
-      name: 'Interstellar Ventures',
-      url: 'https://interstellar-ventures.vercel.app/'
-    },
-    {
       name: 'Qapture',
       url: 'https://qapture-frontend.vercel.app/'
     }

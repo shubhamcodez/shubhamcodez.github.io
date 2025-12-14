@@ -143,6 +143,9 @@ const Casual = () => {
       // Update meta description
       updateMetaTag('description', `${selectedBlog.description} - Blog post by Shubham Singh NYU on Casual Inference.`);
 
+      // Update author meta tag
+      updateMetaTag('author', 'Shubham Singh');
+
       // Update keywords with blog-specific terms
       const keywords = `Shubham Singh, Shubham Singh NYU, ${selectedBlog.title}, Casual Inference, blog, ${selectedBlog.description.split(' ').slice(0, 5).join(', ')}, quantitative finance, machine learning`;
       updateMetaTag('keywords', keywords);
