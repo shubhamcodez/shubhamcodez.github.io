@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 const SEO = ({
   title = "Shubham Singh | Quantitative Finance Researcher & Machine Learning Expert",
-  description = "Shubham Singh - Exceptional Quantitative Researcher with advanced expertise in statistical modeling, machine learning, and algorithmic trading. Research leader in quantitative finance, LLM finetuning, quantum semantic embeddings, and market making strategies. Founder of Exituity, Interstellar Ventures (early-stage investment firm), and Singh Asset Management (quantitative asset management with $50k AUM and exceptional returns).",
+  description = "Shubham Singh - Exceptional Quantitative Researcher with advanced expertise in statistical modeling, machine learning, and algorithmic trading. Research leader in quantitative finance, LLM finetuning, quantum semantic embeddings, and market making strategies. Founder of Exituity, Interstellar Ventures (early-stage investment firm), and Singh Asset Management (quantitative asset management with exceptional returns).",
   keywords = "quantitative researcher, machine learning expert, algorithmic trading, statistical modeling, quantitative finance, LLM finetuning, quantum semantic embedding, market making, arbitrage strategies, optimal control, NYU graduate, published researcher, Exituity founder, Interstellar Ventures founder, Singh Asset Management founder, early stage investing, startup advisor, venture capital, angel investing, asset management, investment management, hedge fund, quantitative trading, US markets, India markets, high returns, portfolio management, founder advisor",
   image = "https://shubhamcodez.github.io/img_nvidia.png",
   type = "website",
@@ -188,19 +188,14 @@ const SEO = ({
       "@type": "Organization",
       "@id": `${baseUrl}#organization/singh-asset-management`,
       "name": "Singh Asset Management",
-      "description": "Singh Asset Management is a quantitative asset management firm with $50k USD AUM, achieving 78% annual returns in US markets and 28% annual returns in India markets in 2025. Founded by Shubham Singh.",
+      "description": "Singh Asset Management is a quantitative asset management firm achieving 78% annual returns in US markets and 28% annual returns in India markets in 2025. Founded by Shubham Singh.",
       "founder": {
         "@type": "Person",
         "name": "Shubham Singh",
         "alternateName": "Shubham Singh NYU"
       },
       "url": baseUrl,
-      "foundingDate": "2024",
-      "assetsUnderManagement": {
-        "@type": "MonetaryAmount",
-        "currency": "USD",
-        "value": "50000"
-      }
+      "foundingDate": "2024"
     }
   ];
 
@@ -378,7 +373,7 @@ const SEO = ({
               "name": "What is Singh Asset Management?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Singh Asset Management is a quantitative asset management firm founded by Shubham Singh with $50k USD in assets under management. In 2025, the firm achieved impressive annual returns of 78% in US markets and 28% in India markets, demonstrating strong performance across both markets."
+                "text": "Singh Asset Management is a quantitative asset management firm founded by Shubham Singh. In 2025, the firm achieved impressive annual returns of 78% in US markets and 28% in India markets, demonstrating strong performance across both markets."
               }
             }
           ]
