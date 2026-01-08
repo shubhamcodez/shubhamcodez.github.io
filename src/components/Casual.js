@@ -26,6 +26,7 @@ import AICAF2024 from './blog/AICAF2024';
 import CDAO2024 from './blog/CDAO2024';
 import BattleOfQuants2024 from './blog/BattleOfQuants2024';
 import LucidEquityResearch from './blog/LucidEquityResearch';
+import Candidates2026 from './blog/Candidates2026';
 
 // Blog posts data imported from individual files
 const allBlogPosts = [
@@ -55,7 +56,8 @@ const allBlogPosts = [
   AICAF2024,
   CDAO2024,
   BattleOfQuants2024,
-  LucidEquityResearch
+  LucidEquityResearch,
+  Candidates2026
 ].map(post => ({
   id: post.id,
   title: post.title,
@@ -105,7 +107,8 @@ const Casual = () => {
       24: RunningManReview,
       25: OneBattleAfterAnotherReview,
       26: TwentyEightYearsLaterReview,
-      27: BoyKillsWorldReview
+      27: BoyKillsWorldReview,
+      28: Candidates2026
     };
 
     const blogPost = blogMap[blog.id];
