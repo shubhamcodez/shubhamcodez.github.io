@@ -1,7 +1,7 @@
 const Candidates2026 = {
   id: 28,
   title: "Predicting the Winner of the Candidates Tournament 2026",
-  date: "2025-01-27",
+  date: "2026-01-07",
   description: "Using Monte Carlo simulation to forecast the winner of the FIDE Candidates Tournament 2026 based on Elo ratings and probabilistic modeling.",
   content: `
     <div class="blog-image-container">
@@ -13,7 +13,7 @@ const Candidates2026 = {
     </div>
 
     <h2>Predicting the Winner of the Candidates Tournament 2026</h2>
-    <p><em>Published on January 27, 2025</em></p>
+    <p><em>Published on January 7, 2026</em></p>
 
     <p>Unlike a head-to-head match, the Candidates is chaotic by design: styles clash, preparation matters unevenly, and a single loss can derail a title challenge.</p>
 
