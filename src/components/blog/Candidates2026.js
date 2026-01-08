@@ -26,9 +26,9 @@ const Candidates2026 = {
 
     <p>The standard Elo formula for Player A's expected score is:</p>
 
-    <p style="text-align: center; font-family: monospace; background-color: #f4f4f4; padding: 15px; border-radius: 5px; margin: 20px 0;">
+    <div class="math-formula">
       Expected Score(A) = 1 / (1 + 10^((Rating(PlayerB) - Rating(PlayerA))/400))
-    </p>
+    </div>
 
     <p>Here, Rating(PlayerA) and Ratings(PlayerB) are the players' ratings. If both players are equally rated, each is expected to score 0.5 points per game. A higher rating increases expected score, but only gradually, small rating differences create small, persistent advantages.</p>
 
@@ -58,7 +58,7 @@ const Candidates2026 = {
 
     <p>This entire process is repeated 10,000 times. The final win probabilities represent the fraction of simulated tournaments in which each player finishes first. In other words, they answer the question:</p>
 
-    <blockquote style="border-left: 4px solid #ccc; padding-left: 20px; margin: 20px 0; font-style: italic;">
+    <blockquote>
       If the Candidates Tournament were played thousands of times under these assumptions, how often would each player win?
     </blockquote>
 
@@ -88,7 +88,7 @@ const Candidates2026 = {
     <h3>Appendix</h3>
     <p>The code I used for simulating the games outcomes:</p>
 
-    <pre style="background-color: #f4f4f4; padding: 20px; border-radius: 5px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.5;"><code>import random
+    <pre><code>import random
 import math
 
 # Reproducibility
